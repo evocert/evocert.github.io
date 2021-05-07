@@ -28,25 +28,16 @@
         <ul>
           <li class="js-btn selected">Get Started</li>
           <li class="js-btn">Configuration</li>
-          
-	  <li class="js-btn">templating</li>
-	  
-	  <li class="js-btn">dbms</li>
-	  
-	  <li class="js-btn">webing</li>
-	  
-	  <li class="js-btn">request</li>
-	  
-	  <li class="js-btn">response</li>
-	  
-	  <li class="js-btn">schedule</li>
-	  
-	  <li class="js-btn">websocket</li>
-	  
-	  <li class="js-btn">mqtt</li>
-	  
-	  <li class="js-btn">cache</li>
-	  
+	  <li class="js-btn">Modules</li>
+	  <li class="js-btn">Templating</li>
+	  <li class="js-btn">Dbms</li>
+	  <li class="js-btn">Webing</li>
+	  <li class="js-btn">Request</li>
+	  <li class="js-btn">Response</li>
+	  <li class="js-btn">Schedule</li>
+	  <li class="js-btn">Websocket</li>
+	  <!--<li class="js-btn">Mqtt</li>-->
+	  <li class="js-btn">Cache</li>
           <li class="js-btn">Issues</li>
         </ul>
       </aside>
@@ -55,19 +46,20 @@
           <h3 class="section__title">Get Started</h3>
 	  <p>Learn how to install and configure KWE.</p>
           <h3 class="section__title">Installation</h3>
+	  <p>Download the executable using <code>curl</code> or <code>wget</code></p>
           <div class="code__block code__block--notabs">
             <pre class="code code--block">
               <code>
-		$ wget https://kwe.com/downoads/kwe_${PLATFORM}
+		$ wget https://github.com/evocert/kwereleases/releases/download/0.0.1/kwe_${PLATFORM}
               </code>
             </pre>
           </div>
-	  <p>Substitute <code>${PLATFORM}</code> with your platform of choice, e.g. <code>windows.exe</code>, <code>android</code>, <code>linux</code> or <code>mac</code></p>
+	  <p>Substitute <code>${PLATFORM}</code> with your platform of choice, e.g. <code>windows.exe</code>, <code>android</code>, <code>linux</code> or <code>mac</code> Alternatively, try one of the download links on the man page</p>
         </section>
         <section class="js-section">
           <h3 class="section__title">Configuration</h3>
-	  <p>Learn how to configure settings for KWE, such endpoint, database, schedule and listener configuration.</p>
-	  <p>Configuration takes place via a configuration file with the same name as the server you downloaded. For example if you downloaded <code>kwe_android</code>, your configuration file will be named <code>kwe_android.conf.js</code>. You can do pretty much anything you like in this configuration file, but let's take a look at a bare bones configuration file setting up a public web directory, database, schedule, and setting up a listener</p>
+	  <p>Learn how to configure settings for KWE, such endpoint, database, schedule and listener configuration. A sample configuration is provided at the end of this section.</p>
+	  <p>Configuration takes place via a configuration file with the same name as the server you downloaded, <i>i.e.</i> <code>kwe_${PLATFORM}.conf.js</code>. For example if you downloaded <code>kwe_android</code>, your configuration file will be named <code>kwe_android.conf.js</code>. You can do pretty much anything you like in this configuration file, but let's take a look at a bare bones configuration file setting up a public web directory, database, schedule, and setting up a listener</p>
           <div class="code__block code__block--notabs">
             <pre class="code code--block" style="white-space:pre">
               <code>
@@ -75,14 +67,14 @@
 console.Log("Configuring endpoints...");
 resourcing.RegisterEndpoint("/","./www");
 
-console.Log("Connecting databases...");
+console.Log("COnfiguring databases...");
 dbms.RegisterConnection(
         "pg",
         "postgres",
-        "user=postgres password=1234!@#$qwerQWER dbname=postgres sslmode=disable"
+        "user=postgres password=PASSWORD dbname=postgres sslmode=disable"
 );
 
-console.Log("Setting up schedule...");
+console.Log("Concfiguring schedule...");
 var schid="mySchedule";
 sch0=channel
 .Schedules()
@@ -108,12 +100,23 @@ console.Log("Listening on port "+PORT);
               </code>
             </pre>
           </div>
-
           <hr />
-
         </section>
-
-        
+        <p>Store this configuration file in the same directory your KWE executable lives then run the executable. A sample configuration to download is provided <b><a href="./res/samples/config/kwe.conf.js" style="font-weight:bold;">here</a></b>. Remember to save and rename:) Thats it. Installation complete</p>
+        <p>If you would like to install KWE as a service, that is also possible, using the following invocation</p>
+        <section>
+          <div class="code__block code__block--notabs">
+            <pre class="code code--block" style="white-space:pre">
+<code>
+kwe_${PLATFORM} service install</code>
+            </pre>
+          </div>
+        </section>
+        <p>Again, substitute <code>${PLATFORM}</code> with your selected platform. Additionally, escelated privieleges may be required to perform this operation.</p>
+        <section class="js-section">
+          <h3 class="section__title">MODULES</h3>
+          <p>Modules are resources packed into a zip file. You can create your own or download modules others have created and save them in any of your locally configure resource endpoints (<i>e.g.</i> <code>./www</code>). A <b><a href="./res/samples/modules/sample.zip" style="font-weight:bold;">sample</a></b> module is provided to try out. There is no need to extract the archive, but if you want to find out more, feel free to do so, as this will allow you to inspect the code and make changes.</p>
+        </section>
         <section class="js-section">
           <h3 class="section__title">TEMPLATING</h3>
 	  <p>Templating allows you to mix script and templates to generate output, switching between active and passive code. Control is provided for loading templates, as well as passing in arguments and obtaining return values from templates.</p>
@@ -155,12 +158,13 @@ console.Log("Listening on port "+PORT);
 	  <p>WebSocket are handled with <code>websocket</code>. Simple client or server WebSocket connections can be scripted.</p>
 	  <hr/>
         </section>
-        
+        <!--
         <section class="js-section">
           <h3 class="section__title">MQTT</h3>
 	  <p>Easy IOT integration with <code>mqtt</code>. You will of course need an <code>mqtt</code> server as well</p>
 	  <hr/>
         </section>
+	-->
         
         <section class="js-section">
           <h3 class="section__title">CACHE</h3>
