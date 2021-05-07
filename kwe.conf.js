@@ -1,15 +1,15 @@
 <@
 console.Log("Configuring endpoints...");
 resourcing.RegisterEndpoint("/","./www");
-/*
-console.Log("Configuring databases...");
+
+console.Log("COnfiguring databases...");
 dbms.RegisterConnection(
         "pg",
         "postgres",
         "user=postgres password=PASSWORD dbname=postgres sslmode=disable"
 );
-*/
-console.Log("Configuring schedule...");
+
+console.Log("Concfiguring schedule...");
 var schid="mySchedule";
 sch0=channel
 .Schedules()
