@@ -51,4 +51,5 @@ require({
 		});
 		window.obj=obj;
 	};
+	window.buildClient();
 });
