@@ -1,0 +1,44 @@
+*{
+	/*
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+	user-select:none;
+	-o-user-select:none;
+	*/
+}
+*{
+	background:#000000;
+	color:#FFFFFF;
+	border:unset;
+	font-family:monospace;
+	text-decoration:unset;
+}
+.selected{
+	background:red;
+}
+button{
+	background:#444444;
+	color:#CCCCCC;
+	margin:0px;
+	overflow:hidden;
+	padding:4px;
+	text-align:left;
+}
+sup{
+	float:right;
+	color:#FFFFFF;
+	background:#AAAAAA;
+	padding:1px;
+	margin:1px;
+	border-radius:2px;
+}
+input{
+	background:#444444;
+}
+input:focus{
+	background:#AAAAAA;
+	color:#444444;
+	border:0px!important;
+	outline:unset;
+}
