@@ -1,6 +1,6 @@
 require({
 	paths:{
-		"jquery":"/jquery"
+		"jquery":"./js/jquery"
 	},
 	shim:{
 		"jquery":{
