@@ -1,0 +1,93 @@
+define([
+	"module",
+	"jquery",
+	"api/parsing",
+	"text!frag/ov.html"
+],function(
+	module,
+	_$,
+	parsing,
+	frag_ov
+){
+	$=_$.noConflict();
+	var render=function(options){
+		options=typeof(options)=="object"?options:{};
+		if(options.target==undefined)throw("ETGT");
+		if(options.data==undefined)throw("EDATA");
+		if(options.template==undefined)options.template=frag_ov
+		$(options.target).text(typeof(parsedoc));
+			var src="";
+			parsing(
+				{
+					beglbl:"[[",
+					endlbl:"]]",
+					data:options.data,
+					//trimactive:false,
+					//flushpassive:function(val,idx){},
+					//flushactive:function(val,idx){//tmpcode+=val;},
+					print:function(val){},
+					evalactive:function(script,content){
+						//console.log(script);
+						var ctx={};
+						print=function(val){
+							//src+=val;
+							parsing(
+								{
+									beglbl:"{{",
+									endlbl:"}}",
+									data:options.data,
+									//trimactive:false,
+									flushpassive:function(val,idx){
+										src+=val;
+									},
+									flushactive:function(val,idx){
+										try{src+=(eval("(function(){return "+val+";})")).call(ctx);}catch(e){src+="[!"+e.toString()+"!]";}
+									}.bind(ctx)
+								},
+								val
+							);
+						}
+						eval("(function(){"+script+"})").call(ctx);
+					},
+				},
+				options.template
+			);
+			options.target.html(src)
+			$(options.target).find("a").click(function(tgt){
+				var id=$(this).attr("id")
+				var template=$(this).data("template");
+				if(!template){
+					if(id==""||id==null)return;
+					if(id==".."){
+						render(options.parent);
+						return;
+					}
+					if(id.startsWith("_.")){
+						id=id.substring(2);
+						render({parent:options,target:options.target,isdetailedview:true,data:options.data._[id]});
+					}else{
+						render({parent:options,target:options.target,data:options.data[id]});
+					}
+				}else{
+					require(["text!"+template],function(template){
+						if(typeof(template)=="undefined"||template==null){
+							throw("ETPL");
+						}
+						if(id==""||id==null)return;
+						if(id==".."){
+							render(options.parent);
+							return;
+						}
+						if(id.startsWith("_.")){
+							id=id.substring(2);
+							render({parent:options,target:options.target,isdetailedview:true,data:options.data._[id],template:template});
+						}else{
+							render({parent:options,target:options.target,data:options.data[id],template:template});
+						}
+						});
+
+				}
+			});
+	};
+	module.exports=render;
+});

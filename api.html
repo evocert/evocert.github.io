@@ -1,136 +1,22 @@
-<@
-	var data;
-	require(["./data/index.js"],function(data_){data=data_;});
-	var arg;
-	arg=request.Parameters().Parameter("arg");
-@>
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><@print(data.meta.title);@> API - <@print(arg);@></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
-    <link id="global_css" rel="stylesheet" href="scribbler-global.css">
-    <link rel="stylesheet" href="scribbler-doc.css">
-    <link rel="author" href="humans.txt">
-    <style>
-    	table{
-		margin:0px;
-	}
-    	td{
-		border:0px!important;
-		font-size:12px;
-		padding:2px!important;
-		vertical-align:top!important;
-	}
-	.no-padding{
-		padding:0px!important;
-	}
-	.no-border{
-		border:0px!important;
-	}
-    </style>
-  </head>
-  <body>
-    <div class="doc__bg"></div>
-    <nav class="header">
-      <h1 class="logo"><@print(data.meta.title);@> <span class="logo__thin">Doc/Api</span></h1>
-      <ul class="menu">
-        <div class="menu__item toggle"><span></span></div>
-        <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
-        <li class="menu__item"><a href="doc.html" class="link link--dark"><i class="fa fa-book"></i> Docs</a></li>
-        <li class="menu__item"><a href="" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
-      </ul>
-    </nav>
-    <div class="wrapper">
-      <aside class="doc__nav">
-        <ul>
-          <@Object.keys(data.meta.api.modules).forEach(function(k,kidx){@>
-	  <li class="js-btn"><a href="./api.html?arg=<@print(k);@>"><@print(k);@></a></li>
-	  <@});@>
-        </ul>
-      </aside>
-      <article class="doc__content">
-        <section class="js-section">
-<@
-	try{
-		if(arg==null||arg==""){
-			@><h3 class="section__title">Api: Error: Invalid argument</h3><@
-		}else{
-			@><h3 class="section__title">Api: <@print(arg);@></h3><@
-			var module=data.meta.api.modules[arg];
-			if(typeof(module)=="undefined"||module==null){
-				@><p>Error: Failed to obtain module information</p><@
-			}else{
-				@><p><@print(module.description);@></p><@
-				@><h3 class="section__title">Functions</h3><@
-				if(typeof(module.functions)=="object"){
-				Object.keys(module.functions).forEach(function(k,kidx){
-					@><h4><@println(k);@></h4>
-					<table>
-						<tr><td>Description:</td><td><@print(module.functions[k].dsc);@></td></tr>
-						<tr><td>Returns:</td><td><@print(module.functions[k].ret);@></td></tr>
-						<tr><td>Parameters</td><td class="no-padding no-border"><table>
-							<@module.functions[k].arg.forEach(function(arg,argidx){@>
-								<tr><td>Name:</td><td><@print(arg.nam);@></td></tr>
-								<tr><td>Description:</td><td><@print(arg.dsc);@></td></tr>
-								<tr><td>Type:</td><td><@print(arg.typ);@></td></tr>
-							<@});@>
-							</table></tr>
-						</td></tr>
-					</table>
-					<hr/>
-					<@
-				});
-				}else{@><p>The are no functions</p><@}
-				@><h3 class="section__title">Classes</h3><@
-				if(typeof(module.classes)=="object"){
-				Object.keys(module.classes).forEach(function(k,kidx){
-					@><h4 class="section__title"><@println(k);@></h4>
-					<table>
-						<tr><td>Description:</td><td><@print(module.classes[k].dsc);@></td></tr>
-						<tr><td>Returns:</td><td><@print(module.classes[k].ret);@></td></tr>
-						<tr><td>Constructor</td><td class="no-padding no-border"><table>
-							<@module.classes[k].ctor.forEach(function(arg,argidx){@>
-								<tr><td>Name:</td><td><@print(arg.nam);@></td></tr>
-								<tr><td>Description:</td><td><@print(arg.dsc);@></td></tr>
-								<tr><td>Type:</td><td><@print(arg.typ);@></td></tr>
-							<@});@>
-							</table></tr>
-						</td></tr>
-
-						<tr><td>Members</td><td class="no-padding no-border"><table>
-							<@module.classes[k].mem.forEach(function(arg,argidx){@>
-								<tr><td>Name:</td><td><@print(arg.nam);@></td></tr>
-								<tr><td>Description:</td><td><@print(arg.dsc);@></td></tr>
-								<tr><td>Type:</td><td><@print(arg.typ);@></td></tr>
-							<@});@>
-							</table></tr>
-						</td></tr>
-					</table>
-					<hr/>
-					<@
-				});
-				}else{@><p>The are no classes</p><@}
-
-			}
-		}
-	}catch(e){
-		println("Error: "+e.toString());
-	}
-@>
-
-
-        </section>
-      </article>
-    </div>
-
-    <footer class="footer">Scribbler is a free HTML template created exclusively for <a href="https://tympanus.net/codrops/?p=33686" target="_blank" class="link link--light">Codrops</a>.</footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="scribbler.js"></script>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>KWE - API</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
+		<link id="global_css" rel="stylesheet" href="scribbler-global.css">
+		<link rel="stylesheet" href="scribbler-landing.css">
+		<link rel="author" href="humans.txt">
+		<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
+	</head>
+	<body>
+		<div id="output"></div>
+		<script type="application/javascript" src="./js/webactions.bundle.js"></script>
+		<script type="application/javascript" src="./js/require.js"></script>
+		<script type="application/javascript" src="./js/index.js"></script>
+	</body>
 </html>

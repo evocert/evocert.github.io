@@ -1,0 +1,29 @@
+<@
+try{
+	//require.config({useParseEval:true});
+	require(["./request.js","./cmd.js"],function(r,c){
+		var d=r.data();
+		if(typeof(c[d.cmd])=="function"){
+			var ret=c[d.cmd](r);
+			switch(typeof(ret)){
+				case"object":
+					print(JSON.stringify(ret));
+					break;
+				case"number":
+					print(ret);
+					break;
+				case"string":
+					print(ret);
+					break;
+				default:
+					break;
+			}
+		}else{
+			print("Invalid command");
+		}
+		//print('<script>console.log('+JSON.stringify(r.tojson())+');</script>');
+	});
+}catch(e){
+	print(e.toString());
+}
+@>

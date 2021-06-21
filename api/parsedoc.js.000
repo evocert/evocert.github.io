@@ -1,0 +1,187 @@
+define(["module","./parsing"],function(module,parsing){
+	module.exports=function(r){
+		request.ResponseHeader().Set("Content-Type","application/json");
+		var t0=new Date();
+		var nfile=0;
+		var ndocs=0;
+		var nconst=0;
+		var nfunc=0;
+		var nparam=0;
+		var nreturn=0;
+		var nstruct=0;
+		var nmemb=0;
+		var docidx=0;
+		var objdoc={};
+		var root=r.data().path;
+		_fsutils.FIND(root).filter(function(e){
+			return e.Name().endsWith(".go");
+		}).forEach(function(e){
+			var src=_fsutils.CATS(e.AbsolutePath());
+			docidx++;
+			nfile++;
+			package={};
+			package.path=e.Path();//={};
+			package.name=(function(){
+				var ret=null;
+				try{src.split("\n").forEach(function(ln){
+					if(ret!=null)throw("done");
+					ln=ln.trim();
+					if(ln.startsWith("package"))
+						ret=ln.split("").reverse().join("").split(" ")[0].split("").reverse().join("");
+				}.bind(this))}catch(e){};
+				return ret;
+			})();
+			var pathcomps=e.Path().substring(root.length+1).split("/");
+			pathcomps.pop();//fnam
+			//var holder={};
+			//pathcomps[pathcomps.length-1]=_.package.name
+			var objcur=objdoc;
+			pathcomps.forEach(function(comp,compidx){
+				if(objcur[comp]==null)objcur[comp]={};
+				objcur=objcur[comp];
+			});
+			objcur.package=package;
+			var _={};
+			objcur._=_;
+			var prvpas=null;
+			{//type
+				var out=[];
+				var curstruct=null;
+				var options={
+					beglbl:function(){return 'type '},
+					endlbl:function(){return ' {\n'},
+					startParsing:function(){},
+					trimactive:false,
+					flushpassive:function(val){
+						prvpas=val;
+						if(curstruct!=null){
+							var attrbuf=[];
+							try{val.split("\n").forEach(function(ln){
+								if(ln=="}")throw("done");
+								attrbuf.push(ln);
+							}.bind(this));}catch(e){}
+							curstruct.members={};
+							attrbuf.forEach(function(ln){
+								ln=ln.trim();
+								curstruct.members[ln.split(" ")[0]]=ln.split("").reverse().join("").split(" ")[0].split("").reverse().join("");
+								nmemb++;
+							}.bind());
+							nstruct++;
+							curstruct=null;
+						}
+					},
+					flushactive:function(structln,fnidx){
+						structln=structln.trim();
+						var docs=[];
+						bufcmt=[];
+						try{prvpas.split("\n").reverse().forEach(function(pasln,paslnidx){
+							if(pasln=="")return;
+							if(pasln.trim().startsWith("//"))bufcmt.push(pasln.substring(2));else{
+							ndocs++;
+							throw("done");}
+						}.bind(this));}catch(e){};
+						var structdata={};
+						structdata.ident=structln.split(" ")[0];
+						structdata.base=structln.split(" ").reverse()[0];
+						prvpas=null;
+						docs=bufcmt.reverse().join("\n");
+						_[structdata.ident]={
+							//"original_line":"func "+structln,
+							"type":"type",
+							"ident":structdata.ident,
+							"base":structdata.base,
+							"docstring":docs
+						};
+						curstruct=_[structdata.ident];
+					},
+					evalactive:function(src){}
+				};
+				parsing(options,src);
+			}
+			{//func
+				var out=[];
+				var options={
+					beglbl:function(){return 'func '},
+					endlbl:function(){return ' {\n'},
+					startParsing:function(){},
+					trimactive:false,
+					flushpassive:function(val){
+						prvpas=val;
+					},
+					flushactive:function(fnln,fnidx){
+						fnln=fnln.trim();
+						var docs=[];
+						bufcmt=[];
+						try{prvpas.split("\n").reverse().forEach(function(pasln,paslnidx){
+							if(pasln=="")return;
+							if(pasln.trim().startsWith("//"))bufcmt.push(pasln.substring(2));else{
+							ndocs++;
+							throw("done");}
+						}.bind(this));}catch(e){};
+						var fndata={};
+						if(fnln.startsWith("(")){
+							fndata.ident=fnln.split(")")[1].split("(")[0].trim();
+							fndata.struct=fnln.split("(")[1].split(")")[0].split(" ")[1].substring(1);
+							fndata.params={};
+							fnln.split("(")[2].split(")")[0].trim().split(",").forEach(function(param,paramidx){
+								param=param.trim();
+								fndata.params[param.split(" ")[0]]=param.split(" ")[1]
+								nparam++;
+							}.bind(this));;
+						}else{
+							fndata.ident=fnln.split("(")[0].trim();
+							fndata.params={};
+							fnln.split("(")[1].split(")")[0].trim().split(",").forEach(function(param,paramidx){
+								param=param.trim();
+								fndata.params[param.split(" ")[0]]=param.split(" ")[1]
+								nparam++;
+							}.bind(this));;
+						}
+						fnln=fnln.split("").reverse().join("");
+						if(fnln.startsWith(")")){
+							fndata.return=fnln.split("(")[0].split("").reverse().join("").split(")")[0].split(" ")[1];
+							nreturn++;
+						}else{
+							fndata.return=fnln.split(" ")[0].split("").reverse().join("");
+							nreturn++;
+						}
+						fnln=fnln.split("").reverse().join("");
+						prvpas=null;
+						docs=bufcmt.reverse().join("\n");
+						nfunc++;
+						_[fndata.ident]={
+							//"original_line":"func "+fnln,
+							"type":"func",
+							"ident":fndata.ident,
+							"return":fndata.return,
+							"struct":fndata.struct,
+							"params":fndata.params,
+							"docstring":docs
+						};
+					},
+					evalactive:function(src){}
+				};
+				parsing(options,src);
+			}
+		}.bind(this));
+		var t1=new Date();
+		var objret={};
+		objret.data=objdoc;
+		objret.meta={};
+		objret.meta.nfile=nfile;
+		objret.meta.nfunc=nfunc;
+		objret.meta.nparam=nparam;
+		objret.meta.nreturn=nreturn;
+		objret.meta.nstruct=nstruct;
+		objret.meta.nmemb=nmemb
+		objret.meta.nconst=nconst;
+		objret.meta.ndocs=ndocs;
+
+		objret.meta.root=root;
+		objret.meta.ndocs=docidx;
+		objret.meta.buildtime=t1-t0;
+		//println("<pre>");
+			print(JSON.stringify(objret,0));
+		//println("</pre>");
+	}
+});

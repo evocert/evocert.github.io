@@ -1,0 +1,141 @@
+[['use strict';]]
+[[try{]]
+<aside class="doc__nav">
+	<ul class="">
+	[[if(options.parent){]]
+		<li class="js-btn left"><a href="#" id="..">Back</a></li>
+	[[}else{]]
+		<li class="js-btn "><a href="#">Home</a></li>
+	[[}]]
+
+		[[Object.keys(options.data).forEach(function(_k){
+			if(_k=="_")return;
+			if(_k=="package")return;
+			this.k=_k;
+		]]
+			<li class="js-btn selected"><a href="#" id="{{this.k}}">{{this.k}}</a></li>
+		[[}.bind(this));]]
+
+	</ul>
+</aside>
+<article class="doc__content">
+
+		[[if(!options.isdetailedview){]]
+	<section>
+			[[if(options.data.package){]]
+		<h3 class="section__title">Package</h3>
+		<p>name: {{options.data.package.name}}</p>
+		<p>path: {{options.data.package.path}}</p>
+			[[}]]
+	</section>
+	<!--
+	<section>
+		<h3 class="section__title">Sub Packages</h3>
+		[[{]]
+		[[	var subpackagecount=0;]]
+		[[	Object.keys(options.data).forEach(function(_k){
+				if(_k=="_")return;
+				if(_k=="package")return;
+				subpackagecount++;
+			}.bind(this));]]
+			[[if(subpackagecount>=0){]]
+				<ul class="doc__nav">
+				[[Object.keys(options.data).forEach(function(_k){
+					if(_k=="_")return;
+					if(_k=="package")return;
+					this.k=_k;
+				]]
+					<li class="js-btn selected"><a href="#" id="{{this.k}}">{{this.k}}</a></li>
+				[[}.bind(this));]]
+				</ul>
+
+			[[}else{]]
+				<p>none</p>
+			[[}]]
+		[[}]]
+
+	</section>
+	-->
+	<section>
+	</section>
+	<section>
+		<h3 class="section__title">Details</h3>
+			[[if(options.data._){]]
+			[[Object.keys(options.data._).forEach(function(_k){
+				this.k=_k;
+			]]
+		<section>
+			<h3 class="section__title"><a data-template="frag/detail.html" href="#" id="_.{{this.k}}">{{this.k}}</a></h3>
+					[[if(options.data._[_k].docstring){]]
+						<p>[[print(options.data._[_k].docstring);]]</p>
+					[[}else{]]
+						<p>No documentation</p>
+					[[}]]
+					<div><span href="#" id="_.{{this.k}}"><span class="muted">--- type --</span> 
+						<span
+							[[switch(options.data._[_k].type){
+								case"func":
+									]]style="color:#88FF88"[[
+									break;
+								case"type":
+									]]style="color:#FF8888"[[
+									break;
+								default:
+									break;
+							}]]
+						>
+							[[print(options.data._[_k].type);]]
+						</span>
+							<span class="muted">--</span></span></div>
+					<div><span href="#" id="_.{{this.k}}"><span class="muted">-- ident --</span> [[print(options.data._[_k].ident);]] <span class="muted">--</span></span></div>
+				[[}.bind(this));]]
+		</section>
+			[[}]]
+		[[}]]
+	</section>
+	[[}catch(e){
+		print("--"+e.toString()+"--");
+	}]]
+</article>
+<style>
+	.muted{
+		color:#888888;
+	}
+.arrow-left {
+  display: block;
+  width: 0!important;; 
+  height: 0!important;; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid #fe6a6b; 
+}
+.doc__nav .left {
+    color: var(--accent-color);
+    position: relative;
+}
+.doc__nav .left::after {
+/*
+    position: absolute;
+    content: "";
+    width: 2rem;
+    height: 1rem;
+    background-color:red;
+    left: -1.5rem;
+    top: 0.3rem;
+*/
+    position: absolute;
+    content: "";
+    left: -1.5rem;
+  width: 0!important;; 
+  height: 0!important;; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:15px solid #fe6a6b; 
+
+}
+.doc__nav ul.fixed {
+    position:unset!important;
+    top:unset!important;
+}
+</style>
+
