@@ -17,12 +17,12 @@ define([
 			banner.addClass("alt")
 	})
 	$(document).ready(function(){
+		$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+			return function( elem ) {
+				return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+			};
+		});
 		var idx=0;
-
-
-
-
-
 		var kbdbuf=[];
 		var fnbuf={
 			"/":(function(){
@@ -30,25 +30,27 @@ define([
 				div.css({
 					"width":"auto",
 					"position":"fixed",
-					"padding":"12px",
+					"padding":"4px",
 					"border-radius":"4px",
 					"margin":"4px",
-					"background":"#555555",
+					"background":"var(--accent-color)",
 					"right":"0px",
 					"top":"0px",
 				});
 				var input=$("<input/>")
+				input.css({
+					background:"#FFFFFF",
+					padding:"4px",
+				});
 				div.append(input);
-				$("body").append(div);
-				div.hide();
+				//$("body").append(div);
+				//div.hide();
 				input.on("keyup",function(e){
 					kbdbuf=[];
 					if(e.key=="Escape"){
 						input.blur();
-						div.hide();
 					}else if(e.key=="Enter"){
 						input.blur();
-						div.hide();
 						if(typeof(fnbuf[input.val()])=="function")try{fnbuf[input.val()]()}catch(e){console.error(e);}else{
 							var els=$("a");
 							var el=els.find("selected");
@@ -66,10 +68,12 @@ define([
 						el.addClass("selected");
 						$('html, body').animate({ scrollTop:el.offset().top-100 }, 10);
 					}
-
-
 				}.bind(this));
+				input.on("blur",function(e){
+					div.detach();//div.remove();//div.hide();
+				});
 				return function(){
+					$(document.body).append(div);
 					div.show();
 					input.val("");
 					input.focus();

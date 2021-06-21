@@ -3,9 +3,9 @@
 <aside class="doc__nav">
 	<ul class="">
 	[[if(options.parent){]]
-		<li class="js-btn left"><a href="#" id="..">Back</a></li>
+		<li class="js-btn left"><a href="#" id=".." class="back">Back</a></li>
 	[[}else{]]
-		<li class="js-btn "><a href="#">Home</a></li>
+		<li class="js-btn"><a href="#" class="back">Home</a></li>
 	[[}]]
 
 		[[Object.keys(options.data).forEach(function(_k){
@@ -28,34 +28,6 @@
 		<p>path: {{options.data.package.path}}</p>
 			[[}]]
 	</section>
-	<!--
-	<section>
-		<h3 class="section__title">Sub Packages</h3>
-		[[{]]
-		[[	var subpackagecount=0;]]
-		[[	Object.keys(options.data).forEach(function(_k){
-				if(_k=="_")return;
-				if(_k=="package")return;
-				subpackagecount++;
-			}.bind(this));]]
-			[[if(subpackagecount>=0){]]
-				<ul class="doc__nav">
-				[[Object.keys(options.data).forEach(function(_k){
-					if(_k=="_")return;
-					if(_k=="package")return;
-					this.k=_k;
-				]]
-					<li class="js-btn selected"><a href="#" id="{{this.k}}">{{this.k}}</a></li>
-				[[}.bind(this));]]
-				</ul>
-
-			[[}else{]]
-				<p>none</p>
-			[[}]]
-		[[}]]
-
-	</section>
-	-->
 	<section>
 	</section>
 	<section>
@@ -71,23 +43,94 @@
 					[[}else{]]
 						<p>No documentation</p>
 					[[}]]
-					<div><span href="#" id="_.{{this.k}}"><span class="muted">--- type --</span> 
-						<span
+					<table>
+						<colgroup>
+							<col style="width: 20%;">
+							<col style="width: 80%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>ident:</td>
+								<td style="background:#FFEC88;color:#888844;">[[print(options.data._[_k].ident);]]</td>
+							</tr>
+							<tr>
+								<td>type:</td>
+								<td
+									[[switch(options.data._[_k].type){
+										case"func":
+											]]style="background:#88FF88;color:#448844;"[[
+											break;
+										case"type":
+											]]style="background:#8888FF;color:#444488;"[[
+											break;
+										default:
+											break;
+									}]]
+								>
+									[[print(options.data._[_k].type);]]
+							</tr>
 							[[switch(options.data._[_k].type){
 								case"func":
-									]]style="color:#88FF88"[[
+								]]
+									[[if(options.data._[_k].params){]]
+									<tr>
+										<td>
+											parameters:
+										</td>
+										<td style="padding:0px;">
+											<table>
+												<colgroup>
+													<col style="width: 50%;">
+													<col style="width: 50%;">
+												</colgroup>
+												<tbody>
+													[[Object.keys(options.data._[_k].params).forEach(function(mk){]]
+													<tr>
+														<td>[[print(mk);]]</td>
+														<td class="type [[print(options.data._[_k].params[mk]);]]">[[print(options.data._[_k].params[mk]);]]</td>
+													</tr>
+													[[});]]
+												</tbody>
+											</table
+										</td>
+									</tr>
+									[[}]]
+								[[
 									break;
 								case"type":
-									]]style="color:#FF8888"[[
+								]]
+									[[if(options.data._[_k].members){]]
+									<tr>
+										<td>
+											members:
+										</td>
+										<td style="padding:0px;">
+											<table>
+												<colgroup>
+													<col style="width: 50%;">
+													<col style="width: 50%;">
+												</colgroup>
+												<tbody>
+													[[Object.keys(options.data._[_k].members).forEach(function(mk){]]
+													<tr>
+														<td>[[print(mk);]]</td>
+														<td class="type [[print(options.data._[_k].members[mk]);]]">[[print(options.data._[_k].members[mk]);]]</td>
+													</tr>
+													[[});]]
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									[[}]]
+								[[
 									break;
 								default:
 									break;
 							}]]
-						>
-							[[print(options.data._[_k].type);]]
-						</span>
-							<span class="muted">--</span></span></div>
-					<div><span href="#" id="_.{{this.k}}"><span class="muted">-- ident --</span> [[print(options.data._[_k].ident);]] <span class="muted">--</span></span></div>
+
+						</tbody>
+
+					</table>
 				[[}.bind(this));]]
 		</section>
 			[[}]]
@@ -137,5 +180,41 @@
     position:unset!important;
     top:unset!important;
 }
+a.selected{
+  color:#FFFFFF;
+  background:var(--accent-color);
+  font-weight:bold;
+}
+table td, table th {
+    border: 1px solid var(--code-bg-color);
+    padding: 4px;
+    font-weight: 300;
+vertical-align:top;
+}
+table td:first-child {
+    background-color: #CCC;
+    color: #888888;
+    font-weight: 600;
+}
+
+	.type.func{
+		background:#8888FF;
+	}
+	.type.int64{
+		background:#88FFFF;
+	}
+	.type.int32{
+		background:#88FFFF;
+	}
+	.type.time{
+		background:#8888FF;
+	}
+	.type.file{
+		background:#FF8888;
+	}
+	.type.string{
+		background:#88FF88;
+	}
+
 </style>
 

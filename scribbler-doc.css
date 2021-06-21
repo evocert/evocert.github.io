@@ -69,12 +69,12 @@ html, body {
   transition: color .3s ease-in-out;
 }
 
-.doc__nav .selected {
+.doc__nav li.selected {
   color: var(--accent-color);
   position: relative;
 }
 
-.doc__nav .selected:after {
+.doc__nav li.selected:after {
   position: absolute;
   content: "";
   width: 1rem;
@@ -112,4 +112,10 @@ html, body {
   .doc__nav .selected:after {
     display: none;
   }
+}
+input:focus{
+	background:#AAAAAA;
+	color:#444444;
+	border:0px!important;
+	outline:unset;
 }

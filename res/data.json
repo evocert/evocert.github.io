@@ -1,0 +1,4578 @@
+{
+  "root": {},
+  "caching": {
+      "app": {
+        "package": {
+          "path": "caching/app/app.go",
+          "name": "main"
+        },
+        "_": {
+          "main": {
+            "type": "func",
+            "ident": "main",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "package": {
+        "path": "caching/maphandler.go",
+        "name": "caching"
+      },
+      "_": {
+        "MapHandler": {
+          "type": "type",
+          "ident": "MapHandler",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "mp": "*Map",
+            "crntmp": "*Map",
+            "internal": "bool"
+          }
+        },
+        "NewMapHandler": {
+          "type": "func",
+          "ident": "NewMapHandler",
+          "return": "*MapHandler",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "currentMap": {
+          "type": "func",
+          "ident": "currentMap",
+          "return": "*Map",
+          "struct": "MapHandler",
+          "params": {},
+          "docstring": ""
+        },
+        "Reset": {
+          "type": "func",
+          "ident": "Reset",
+          "return": "...interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Focus": {
+          "type": "func",
+          "ident": "Focus",
+          "return": "bool",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Find": {
+          "type": "func",
+          "ident": "Find",
+          "return": "interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Keys": {
+          "type": "func",
+          "ident": "Keys",
+          "return": "[]interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Values": {
+          "type": "func",
+          "ident": "Values",
+          "return": "[]interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Put": {
+          "type": "func",
+          "ident": "Put",
+          "return": "interface{},",
+          "struct": "MapHandler",
+          "params": {
+            "name": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Pop": {
+          "type": "func",
+          "ident": "Pop",
+          "return": "interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Unshift": {
+          "type": "func",
+          "ident": "Unshift",
+          "return": "interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "At": {
+          "type": "func",
+          "ident": "At",
+          "return": "interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "FocusAt": {
+          "type": "func",
+          "ident": "FocusAt",
+          "return": "bool",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Clear": {
+          "type": "func",
+          "ident": "Clear",
+          "return": "...interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Remove": {
+          "type": "func",
+          "ident": "Remove",
+          "return": "...interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "name": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Fprint": {
+          "type": "func",
+          "ident": "Fprint",
+          "return": "error",
+          "struct": "MapHandler",
+          "params": {
+            "w": "io.Writer",
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Shift": {
+          "type": "func",
+          "ident": "Shift",
+          "return": "int",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Push": {
+          "type": "func",
+          "ident": "Push",
+          "return": "int",
+          "struct": "MapHandler",
+          "params": {
+            "k": "interface{}",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "String": {
+          "type": "func",
+          "ident": "String",
+          "return": "string",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "return": "...interface{}",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Reader": {
+          "type": "func",
+          "ident": "Reader",
+          "return": "io.Reader",
+          "struct": "MapHandler",
+          "params": {
+            "ks": "...interface{}"
+          },
+          "docstring": ""
+        }
+      },
+      "test": {
+        "package": {
+          "path": "caching/test/map.go",
+          "name": "test"
+        },
+        "_": {
+          "MapHandler": {
+            "type": "type",
+            "ident": "MapHandler",
+            "base": "struct",
+            "docstring": "",
+            "members": {
+              "rnble": "active.Runtime",
+              "intern": "bool",
+              "mp": "*Map",
+              "dspsng": "bool",
+              "crntmp": "*Map",
+              "crntactnstmp": "int64",
+              "hndlrs": "map[*MapHandler]*MapHandler",
+              "prnthndlr": "*MapHandler"
+            }
+          },
+          "mapAction": {
+            "type": "type",
+            "ident": "mapAction",
+            "base": "struct",
+            "docstring": "",
+            "members": {
+              "lck": "*sync.RWMutex",
+              "keys": "*enumeration.List",
+              "kvndm": "map[*enumeration.Node]*enumeration.Node",
+              "//vkndm": "map[*enumeration.Node]*enumeration.Node",
+              "values": "*enumeration.List",
+              "lstactn": "mapAction",
+              "lstactnstmp": "int64"
+            }
+          },
+          "actionTransaction": {
+            "type": "type",
+            "ident": "actionTransaction",
+            "base": "struct",
+            "docstring": "",
+            "members": {
+              "crntactn": "mapAction",
+              "cntxt": "context.Context"
+            }
+          },
+          "mapHandlerFinalize": {
+            "type": "func",
+            "ident": "mapHandlerFinalize",
+            "return": "*MapHandler",
+            "params": {
+              "mphndlr": "*MapHandler"
+            },
+            "docstring": ""
+          },
+          "NewBuffer": {
+            "type": "func",
+            "ident": "NewBuffer",
+            "return": "*iorw.Buffer",
+            "struct": "MapHandler",
+            "params": {},
+            "docstring": "NewBuffer helper that returns instance of *iorw.Buffer"
+          },
+          "NewList": {
+            "type": "func",
+            "ident": "NewList",
+            "return": "*enumeration.List",
+            "struct": "MapHandler",
+            "params": {
+              "distinct": "...bool"
+            },
+            "docstring": "NewList helper that returns instance of *enumeration.List"
+          },
+          "NewMapHandler": {
+            "type": "func",
+            "ident": "NewMapHandler",
+            "return": "*MapHandler",
+            "params": {
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Reset": {
+            "type": "func",
+            "ident": "Reset",
+            "return": "...interface{}",
+            "struct": "MapHandler",
+            "params": {
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "currentmp": {
+            "type": "func",
+            "ident": "currentmp",
+            "return": "*Map",
+            "struct": "MapHandler",
+            "params": {},
+            "docstring": ""
+          },
+          "Keys": {
+            "type": "func",
+            "ident": "Keys",
+            "return": "[]interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "String": {
+            "type": "func",
+            "ident": "String",
+            "return": "string",
+            "struct": "Map",
+            "params": {
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Reader": {
+            "type": "func",
+            "ident": "Reader",
+            "return": "*iorw.EOFCloseSeekReader",
+            "struct": "Map",
+            "params": {
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Fprint": {
+            "type": "func",
+            "ident": "Fprint",
+            "return": "error",
+            "struct": "Map",
+            "params": {
+              "w": "io.Writer",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Values": {
+            "type": "func",
+            "ident": "Values",
+            "return": "[]interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "ReplaceKey": {
+            "type": "func",
+            "ident": "ReplaceKey",
+            "return": "...interface{}",
+            "struct": "Map",
+            "params": {
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Remove": {
+            "type": "func",
+            "ident": "Remove",
+            "return": "...interface{}",
+            "struct": "Map",
+            "params": {
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "At": {
+            "type": "func",
+            "ident": "At",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "FindAt": {
+            "type": "func",
+            "ident": "FindAt",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Push": {
+            "type": "func",
+            "ident": "Push",
+            "return": "int",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Shift": {
+            "type": "func",
+            "ident": "Shift",
+            "return": "int",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Pop": {
+            "type": "func",
+            "ident": "Pop",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Unshift": {
+            "type": "func",
+            "ident": "Unshift",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Put": {
+            "type": "func",
+            "ident": "Put",
+            "return": "interface{},",
+            "struct": "Map",
+            "params": {
+              "k": "interface{}",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Find": {
+            "type": "func",
+            "ident": "Find",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Size": {
+            "type": "func",
+            "ident": "Size",
+            "return": "int",
+            "struct": "Map",
+            "params": {},
+            "docstring": ""
+          },
+          "ValueAt": {
+            "type": "func",
+            "ident": "ValueAt",
+            "return": "interface{}",
+            "struct": "Map",
+            "params": {
+              "index": "int64",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "NewHandler": {
+            "type": "func",
+            "ident": "NewHandler",
+            "return": "*MapHandler",
+            "struct": "MapHandler",
+            "params": {},
+            "docstring": ""
+          },
+          "Clear": {
+            "type": "func",
+            "ident": "Clear",
+            "return": "...interface{}",
+            "struct": "Map",
+            "params": {
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "Close": {
+            "type": "func",
+            "ident": "Close",
+            "struct": "Map",
+            "params": {},
+            "docstring": ""
+          },
+          "mapFinalize": {
+            "type": "func",
+            "ident": "mapFinalize",
+            "return": "*Map",
+            "params": {
+              "mp": "*Map"
+            },
+            "docstring": ""
+          },
+          "NewMap": {
+            "type": "func",
+            "ident": "NewMap",
+            "return": "*Map",
+            "params": {},
+            "docstring": "NewMap return instance of *Map"
+          },
+          "lastAction": {
+            "type": "func",
+            "ident": "lastAction",
+            "return": "mapAction,",
+            "struct": "Map",
+            "params": {
+              "mphndlr": "*MapHandler",
+              "nxtactn": "...mapAction"
+            },
+            "docstring": ""
+          },
+          "Handler": {
+            "type": "func",
+            "ident": "Handler",
+            "return": "*MapHandler",
+            "struct": "Map",
+            "params": {},
+            "docstring": ""
+          },
+          "mapSize": {
+            "type": "func",
+            "ident": "mapSize",
+            "return": "int",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapString": {
+            "type": "func",
+            "ident": "mapString",
+            "return": "string",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapFprint": {
+            "type": "func",
+            "ident": "mapFprint",
+            "return": "error",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "w": "io.Writer",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "encodeMapAVal": {
+            "type": "func",
+            "ident": "encodeMapAVal",
+            "return": "io.Writer,",
+            "params": {
+              "w": "io.Writer",
+              "jsnenc": "*json.Encoder",
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "val": "interface{}",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "encodeMapVal": {
+            "type": "func",
+            "ident": "encodeMapVal",
+            "return": "io.Writer,",
+            "params": {
+              "w": "io.Writer",
+              "jsnenc": "*json.Encoder",
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "val": "interface{}",
+              "isLastVal": "bool",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "encodeMap": {
+            "type": "func",
+            "ident": "encodeMap",
+            "return": "io.Writer,",
+            "params": {
+              "w": "io.Writer",
+              "jsnenc": "*json.Encoder",
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapReader": {
+            "type": "func",
+            "ident": "mapReader",
+            "return": "*iorw.EOFCloseSeekReader",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapFind": {
+            "type": "func",
+            "ident": "mapFind",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapRemove": {
+            "type": "func",
+            "ident": "mapRemove",
+            "return": "bool,",
+            "params": {
+              "forceRemove": "bool",
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "disposeValue": {
+            "type": "func",
+            "ident": "disposeValue",
+            "return": "interface{}",
+            "params": {
+              "v": "interface{}"
+            },
+            "docstring": ""
+          },
+          "mapClear": {
+            "type": "func",
+            "ident": "mapClear",
+            "return": "*Map,",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapClose": {
+            "type": "func",
+            "ident": "mapClose",
+            "return": "*Map,",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler"
+            },
+            "docstring": ""
+          },
+          "mapValueAt": {
+            "type": "func",
+            "ident": "mapValueAt",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "index": "int64",
+              "ks": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapShift": {
+            "type": "func",
+            "ident": "mapShift",
+            "return": "int",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapFindAt": {
+            "type": "func",
+            "ident": "mapFindAt",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapAt": {
+            "type": "func",
+            "ident": "mapAt",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapPush": {
+            "type": "func",
+            "ident": "mapPush",
+            "return": "int",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapPop": {
+            "type": "func",
+            "ident": "mapPop",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapUnshift": {
+            "type": "func",
+            "ident": "mapUnshift",
+            "return": "interface{}",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapPut": {
+            "type": "func",
+            "ident": "mapPut",
+            "return": "*Map,",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "mapReplaceKey": {
+            "type": "func",
+            "ident": "mapReplaceKey",
+            "return": "*Map,",
+            "params": {
+              "mp": "*Map",
+              "mphndlr": "*MapHandler",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          },
+          "GLOBALMAP": {
+            "type": "func",
+            "ident": "GLOBALMAP",
+            "return": "*Map",
+            "params": {},
+            "docstring": ""
+          },
+          "GLOBALMAPHANDLER": {
+            "type": "func",
+            "ident": "GLOBALMAPHANDLER",
+            "return": "*MapHandler",
+            "params": {},
+            "docstring": ""
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      }
+    },
+  "chnls": {
+      "package": {
+        "path": "chnls/requestscheduling.go",
+        "name": "chnls"
+      },
+      "_": {
+        "RequestScheduleAction": {
+          "type": "type",
+          "ident": "RequestScheduleAction",
+          "base": "struct",
+          "docstring": "RequestScheduleAction - struct implementing scheduling.ActionHandler and wrapping *Request",
+          "members": {
+            "*scheduling.ScheduleAction": "*scheduling.ScheduleAction",
+            "rqst": "*Request",
+            "atvfunc": "goja.Value"
+          }
+        },
+        "Schedule": {
+          "type": "func",
+          "ident": "Schedule",
+          "return": "*scheduling.Schedule",
+          "struct": "Request",
+          "params": {},
+          "docstring": "Schedule refer to scheduling.ScheduleHandler - StartedSchedule()"
+        },
+        "StartedSchedule": {
+          "type": "func",
+          "ident": "StartedSchedule",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "StartedSchedule refer to scheduling.ScheduleHandler - StartedSchedule()"
+        },
+        "StoppedSchedule": {
+          "type": "func",
+          "ident": "StoppedSchedule",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "StoppedSchedule refer to scheduling.ScheduleHandler - StoppedSchedule()"
+        },
+        "ShutdownSchedule": {
+          "type": "func",
+          "ident": "ShutdownSchedule",
+          "return": "error",
+          "struct": "Request",
+          "params": {},
+          "docstring": "ShutdownSchedule refer to scheduling.ScheduleHandler - ShutdownSchedule()"
+        },
+        "func": {
+          "type": "func",
+          "ident": "func",
+          "return": "error",
+          "params": {},
+          "docstring": ""
+        },
+        "executeSchdlDbms": {
+          "type": "func",
+          "ident": "executeSchdlDbms",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "executeSchdlCommand": {
+          "type": "func",
+          "ident": "executeSchdlCommand",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "executeSchdlScript": {
+          "type": "func",
+          "ident": "executeSchdlScript",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "executeScheduleAction": {
+          "type": "func",
+          "ident": "executeScheduleAction",
+          "return": "error",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "PrepActionArgs": {
+          "type": "func",
+          "ident": "PrepActionArgs",
+          "return": "[]interface{},",
+          "struct": "Request",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "PrepActionArgs refer to scheduling.ScheduleHandler - PrepActionArgs()"
+        },
+        "OnExecuteAction": {
+          "type": "func",
+          "ident": "OnExecuteAction",
+          "return": "bool,",
+          "struct": "RequestScheduleAction",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "OnExecuteAction implementioan that is called by *scheduling.ScheduleAction ExecuteAction()"
+        }
+      }
+    },
+  "database": {
+      "package": {
+        "path": "database/statement.go",
+        "name": "database"
+      },
+      "_": {
+        "Statement": {
+          "type": "type",
+          "ident": "Statement",
+          "base": "struct",
+          "docstring": "Statement - struct",
+          "members": {
+            "cn": "*Connection"
+          }
+        }
+      },
+      "db2": {
+        "package": {
+          "path": "database/db2/db2.go",
+          "name": "db2"
+        },
+        "_": {
+          "Open": {
+            "type": "func",
+            "ident": "Open",
+            "return": "error",
+            "params": {
+              "datasource": "string"
+            },
+            "docstring": "Open -wrap sql.Open(\"mysql\", datasource)"
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "mysql": {
+        "package": {
+          "path": "database/mysql/mysql.go",
+          "name": "mysql"
+        },
+        "_": {
+          "Open": {
+            "type": "func",
+            "ident": "Open",
+            "return": "error",
+            "params": {
+              "datasource": "string"
+            },
+            "docstring": "Open -wrap sql.Open(\"mysql\", datasource)"
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "ora": {
+        "package": {
+          "path": "database/ora/ora.go",
+          "name": "ora"
+        },
+        "_": {
+          "Open": {
+            "type": "func",
+            "ident": "Open",
+            "return": "error",
+            "params": {
+              "datasource": "string"
+            },
+            "docstring": "Open -wrap sql.Open(\"oracle\", datasource)"
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "postgres": {
+        "package": {
+          "path": "database/postgres/postgres.go",
+          "name": "postgres"
+        },
+        "_": {
+          "Open": {
+            "type": "func",
+            "ident": "Open",
+            "return": "error",
+            "params": {
+              "datasource": "string"
+            },
+            "docstring": "Open -wrap sql.Open(\"pgx\", datasource)"
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "sqlserver": {
+        "package": {
+          "path": "database/sqlserver/sqlserver.go",
+          "name": "sqlserver"
+        },
+        "_": {
+          "Open": {
+            "type": "func",
+            "ident": "Open",
+            "return": "error",
+            "params": {
+              "datasource": "string"
+            },
+            "docstring": "Open -wrap sql.Open(\"sqlserver\", datasource)"
+          },
+          "init": {
+            "type": "func",
+            "ident": "init",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      }
+    },
+  "ecma": {
+      "jsext": {
+        "package": {
+          "path": "ecma/jsext/registrar.go",
+          "name": "jsext"
+        },
+        "_": {
+          "Register": {
+            "type": "func",
+            "ident": "Register",
+            "return": "*goja.Runtime",
+            "params": {
+              "vm": "*goja.Runtime"
+            },
+            "docstring": ""
+          }
+        }
+      }
+    },
+  "enumeration": {
+      "package": {
+        "path": "enumeration/linklist.go",
+        "name": "enumeration"
+      },
+      "_": {
+        "Node": {
+          "type": "type",
+          "ident": "Node",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "lst": "*List",
+            "val": "interface{}"
+          }
+        },
+        "listaction": {
+          "type": "type",
+          "ident": "listaction",
+          "base": "string",
+          "docstring": "",
+          "members": {
+            "if": "{",
+            "return": "\"\"",
+            "}": "}"
+          }
+        },
+        "List": {
+          "type": "type",
+          "ident": "List",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "head": "*Node",
+            "tail": "*Node",
+            "vnds": "map[interface{}]*Node",
+            "reversemap": "map[*Node]*Node",
+            "forwardmap": "map[*Node]*Node",
+            "distinct": "bool"
+          }
+        },
+        "Value": {
+          "type": "func",
+          "ident": "Value",
+          "return": "interface{}",
+          "struct": "Node",
+          "params": {},
+          "docstring": ""
+        },
+        "Next": {
+          "type": "func",
+          "ident": "Next",
+          "return": "*Node",
+          "struct": "Node",
+          "params": {},
+          "docstring": ""
+        },
+        "Previous": {
+          "type": "func",
+          "ident": "Previous",
+          "return": "*Node",
+          "struct": "Node",
+          "params": {},
+          "docstring": ""
+        },
+        "String": {
+          "type": "func",
+          "ident": "String",
+          "return": "string",
+          "struct": "istaction",
+          "params": {},
+          "docstring": ""
+        },
+        "InsertAfter": {
+          "type": "func",
+          "ident": "InsertAfter",
+          "return": "bool,",
+          "struct": "List",
+          "params": {
+            "mdfying": "func"
+          },
+          "docstring": ""
+        },
+        "InsertBefore": {
+          "type": "func",
+          "ident": "InsertBefore",
+          "return": "bool,",
+          "struct": "List",
+          "params": {
+            "mdfying": "func"
+          },
+          "docstring": ""
+        },
+        "Set": {
+          "type": "func",
+          "ident": "Set",
+          "return": "interface{},",
+          "struct": "Node",
+          "params": {
+            "val": "interface{}",
+            "forceset": "...bool"
+          },
+          "docstring": ""
+        },
+        "Dispose": {
+          "type": "func",
+          "ident": "Dispose",
+          "return": "interface{}",
+          "struct": "List",
+          "params": {
+            "eventRemoving": "func"
+          },
+          "docstring": ""
+        },
+        "NewList": {
+          "type": "func",
+          "ident": "NewList",
+          "return": "*List",
+          "params": {
+            "distinct": "...bool"
+          },
+          "docstring": ""
+        },
+        "previousNode": {
+          "type": "func",
+          "ident": "previousNode",
+          "return": "*Node",
+          "params": {
+            "lst": "*List",
+            "nde": "*Node"
+          },
+          "docstring": ""
+        },
+        "nextNode": {
+          "type": "func",
+          "ident": "nextNode",
+          "return": "*Node",
+          "params": {
+            "lst": "*List",
+            "nde": "*Node"
+          },
+          "docstring": ""
+        },
+        "Head": {
+          "type": "func",
+          "ident": "Head",
+          "return": "*Node",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "Tail": {
+          "type": "func",
+          "ident": "Tail",
+          "return": "*Node",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "IsDistinct": {
+          "type": "func",
+          "ident": "IsDistinct",
+          "return": "bool",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "newNode": {
+          "type": "func",
+          "ident": "newNode",
+          "return": "*Node",
+          "struct": "List",
+          "params": {
+            "val": "interface{}"
+          },
+          "docstring": ""
+        },
+        "Length": {
+          "type": "func",
+          "ident": "Length",
+          "return": "int",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "ValueNode": {
+          "type": "func",
+          "ident": "ValueNode",
+          "return": "*Node",
+          "struct": "List",
+          "params": {
+            "val": "interface{}"
+          },
+          "docstring": ""
+        },
+        "Do": {
+          "type": "func",
+          "ident": "Do",
+          "return": "interface{}",
+          "struct": "List",
+          "params": {
+            "RemovingNode": "func"
+          },
+          "docstring": ""
+        },
+        "DoReverse": {
+          "type": "func",
+          "ident": "DoReverse",
+          "return": "interface{}",
+          "struct": "List",
+          "params": {
+            "RemovingNode": "func"
+          },
+          "docstring": ""
+        },
+        "Push": {
+          "type": "func",
+          "ident": "Push",
+          "return": "int",
+          "struct": "List",
+          "params": {
+            "mdfying": "func"
+          },
+          "docstring": ""
+        },
+        "Shift": {
+          "type": "func",
+          "ident": "Shift",
+          "return": "int",
+          "struct": "List",
+          "params": {
+            "mdfying": "func"
+          },
+          "docstring": ""
+        },
+        "Pop": {
+          "type": "func",
+          "ident": "Pop",
+          "return": "interface{}",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "Unshift": {
+          "type": "func",
+          "ident": "Unshift",
+          "return": "interface{}",
+          "struct": "List",
+          "params": {},
+          "docstring": ""
+        },
+        "disposeNode": {
+          "type": "func",
+          "ident": "disposeNode",
+          "return": "interface{}",
+          "params": {
+            "lst": "*List",
+            "nde": "*Node",
+            "eventRemoved": "func"
+          },
+          "docstring": ""
+        },
+        "internalInput": {
+          "type": "func",
+          "ident": "internalInput",
+          "return": "bool,",
+          "params": {
+            "lst": "*List",
+            "modifying": "func"
+          },
+          "docstring": ""
+        }
+      }
+    },
+  "env": {
+      "package": {
+        "path": "env/env.go",
+        "name": "env"
+      },
+      "_": {
+        "ShutdownEnvironment": {
+          "type": "func",
+          "ident": "ShutdownEnvironment",
+          "params": {},
+          "docstring": "ShutdownEnvironment - cleanup (shutdown) environment"
+        },
+        "WrapupCall": {
+          "type": "func",
+          "ident": "WrapupCall",
+          "params": {
+            "wrpupcall": "...func"
+          },
+          "docstring": "WrapupCall - set WrapupCall"
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "examples": {
+      "dbgateway": {
+        "package": {
+          "path": "examples/dbgateway/dbgateway.go",
+          "name": "main"
+        },
+        "_": {
+          "main": {
+            "type": "func",
+            "ident": "main",
+            "params": {},
+            "docstring": ""
+          },
+          "myconnect": {
+            "type": "func",
+            "ident": "myconnect",
+            "return": "*sql.DB,",
+            "params": {
+              "datasource": "string",
+              "a": "...interface{}"
+            },
+            "docstring": ""
+          }
+        }
+      },
+      "ioapp": {
+        "package": {
+          "path": "examples/ioapp/ioapp.go",
+          "name": "main"
+        },
+        "_": {
+          "main": {
+            "type": "func",
+            "ident": "main",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "scheduling": {
+        "package": {
+          "path": "examples/scheduling/scheduling.go",
+          "name": "main"
+        },
+        "_": {
+          "main": {
+            "type": "func",
+            "ident": "main",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      },
+      "simpleserver": {
+        "package": {
+          "path": "examples/simpleserver/simpleserver.go",
+          "name": "main"
+        },
+        "_": {
+          "main": {
+            "type": "func",
+            "ident": "main",
+            "params": {},
+            "docstring": ""
+          }
+        }
+      }
+    },
+  "fsutils": {
+      "package": {
+        "path": "fsutils/fsutils.go",
+        "name": "fsutils"
+      },
+      "_": {
+        "FileInfo": {
+          "type": "type",
+          "ident": "FileInfo",
+          "base": "interface",
+          "docstring": " A FileInfo describes a file",
+          "members": {
+            "Name()": "file",
+            "Path()": "file",
+            "AbsolutePath()": "file",
+            "Size()": "others",
+            "Mode()": "bits",
+            "ModTime()": "time",
+            "IsDir()": "Mode().IsDir()",
+            "JSON()": "string"
+          }
+        },
+        "fileInfo": {
+          "type": "type",
+          "ident": "fileInfo",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "name": "string",
+            "path": "string",
+            "absolutepath": "string",
+            "size": "int64",
+            "mode": "os.FileMode",
+            "modtime": "time.Time"
+          }
+        },
+        "FSUtils": {
+          "type": "type",
+          "ident": "FSUtils",
+          "base": "struct",
+          "docstring": "FSUtils struct",
+          "members": {
+            "LS": "`json:\"ls\"`",
+            "FIND": "`json:\"find\"`",
+            "MKDIR": "`json:\"mkdir\"`",
+            "MKDIRALL": "`json:\"mkdirall\"`",
+            "RM": "`json:\"rm\"`",
+            "MV": "`json:\"mv\"`",
+            "TOUCH": "`json:\"touch\"`",
+            "FINFOPATHSJSON": "`json:\"finfopathsjson\"`",
+            "PIPE": "`json:\"pipe\"`",
+            "PIPES": "`json:\"pipes\"`",
+            "CAT": "`json:\"cat\"`",
+            "CATS": "`json:\"cats\"`",
+            "SET": "`json:\"set\"`",
+            "APPEND": "`json:\"append\"`",
+            "DUMMYFINFO": "`json:\"dummyfino\"`"
+          }
+        },
+        "LS": {
+          "type": "func",
+          "ident": "LS",
+          "return": "[]FileInfo,",
+          "params": {
+            "path": "string",
+            "altpath": "...string"
+          },
+          "docstring": "LS List dir content"
+        },
+        "internalFind": {
+          "type": "func",
+          "ident": "internalFind",
+          "return": "[]os.FileInfo,",
+          "params": {
+            "fi": "os.FileInfo",
+            "rootpath": "string",
+            "altrootpath": "string"
+          },
+          "docstring": ""
+        },
+        "newFileInfo": {
+          "type": "func",
+          "ident": "newFileInfo",
+          "return": "*fileInfo",
+          "params": {
+            "name": "string",
+            "path": "string",
+            "absolutepath": "string",
+            "size": "int64",
+            "mode": "os.FileMode",
+            "modtime": "time.Time"
+          },
+          "docstring": ""
+        },
+        "Name": {
+          "type": "func",
+          "ident": "Name",
+          "return": "string",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "Path": {
+          "type": "func",
+          "ident": "Path",
+          "return": "string",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "AbsolutePath": {
+          "type": "func",
+          "ident": "AbsolutePath",
+          "return": "string",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "Size": {
+          "type": "func",
+          "ident": "Size",
+          "return": "int64",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "Mode": {
+          "type": "func",
+          "ident": "Mode",
+          "return": "os.FileMode",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "ModTime": {
+          "type": "func",
+          "ident": "ModTime",
+          "return": "time.Time",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "IsDir": {
+          "type": "func",
+          "ident": "IsDir",
+          "return": "bool",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "JSON": {
+          "type": "func",
+          "ident": "JSON",
+          "return": "string",
+          "struct": "fileInfo",
+          "params": {},
+          "docstring": ""
+        },
+        "FIND": {
+          "type": "func",
+          "ident": "FIND",
+          "return": "[]FileInfo,",
+          "params": {
+            "path": "string",
+            "altpath": "...string"
+          },
+          "docstring": "FIND list recursive dir content"
+        },
+        "func": {
+          "type": "func",
+          "ident": "func",
+          "return": "\"\"",
+          "params": {
+            "fi": "os.FileInfo",
+            "fipath": "string",
+            "fialtpath": "string"
+          },
+          "docstring": ""
+        },
+        ":= func": {
+          "type": "func",
+          "ident": ":= func",
+          "return": "os.FileInfo,",
+          "params": {
+            "fi": "os.FileInfo",
+            "fipath": "string",
+            "fialtpath": "string"
+          },
+          "docstring": ""
+        },
+        "= fisfunc\n\tif fi, fierr := os.Stat": {
+          "type": "func",
+          "ident": "= fisfunc\n\tif fi, fierr := os.Stat",
+          "return": "nil",
+          "params": {},
+          "docstring": ""
+        },
+        "MKDIR": {
+          "type": "func",
+          "ident": "MKDIR",
+          "return": "error",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "MKDIR make directory"
+        },
+        "MKDIRALL": {
+          "type": "func",
+          "ident": "MKDIRALL",
+          "return": "error",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "MKDIRALL make directory with all necessary parents"
+        },
+        "RM": {
+          "type": "func",
+          "ident": "RM",
+          "return": "error",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "RM Remove file or directory recursive"
+        },
+        "MV": {
+          "type": "func",
+          "ident": "MV",
+          "return": "error",
+          "params": {
+            "path": "string",
+            "destpath": "string"
+          },
+          "docstring": "MV Move file or directory"
+        },
+        "TOUCH": {
+          "type": "func",
+          "ident": "TOUCH",
+          "return": "error",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "TOUCH Create an empty file if the file doesn’t already exist or\n if the file already exists then update the modified time of the file"
+        },
+        "CAT": {
+          "type": "func",
+          "ident": "CAT",
+          "return": "io.Reader,",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "CAT return file content if file exists else empty string"
+        },
+        "CATS": {
+          "type": "func",
+          "ident": "CATS",
+          "return": "string,",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "CATS return file content if file exists else empty string"
+        },
+        "PIPE": {
+          "type": "func",
+          "ident": "PIPE",
+          "return": "io.Reader,",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "PIPE return file content if file exists else empty string"
+        },
+        "PIPES": {
+          "type": "func",
+          "ident": "PIPES",
+          "return": "string,",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "PIPES return file content if file exists else empty string"
+        },
+        "SET": {
+          "type": "func",
+          "ident": "SET",
+          "return": "error",
+          "params": {
+            "path": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "SET if file exists replace content else create file and append content"
+        },
+        "APPEND": {
+          "type": "func",
+          "ident": "APPEND",
+          "return": "error",
+          "params": {
+            "path": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "APPEND if file exists append content else create file and append content"
+        },
+        "FINFOPATHSJSON": {
+          "type": "func",
+          "ident": "FINFOPATHSJSON",
+          "return": "string",
+          "params": {
+            "a": "...FileInfo"
+          },
+          "docstring": "FINFOPATHSJSON []FileInfo to JSON array"
+        },
+        "NewFSUtils": {
+          "type": "func",
+          "ident": "NewFSUtils",
+          "return": "FSUtils",
+          "params": {},
+          "docstring": "NewFSUtils return instance of FSUtils"
+        }
+      }
+    },
+  "iorw": {
+      "active": {
+        "package": {
+          "path": "iorw/active/script.go",
+          "name": "active"
+        },
+        "_": {
+          "parseatvrune": {
+            "type": "func",
+            "ident": "parseatvrune",
+            "return": "error",
+            "params": {
+              "prsng": "*parsing",
+              "rn": "rune"
+            },
+            "docstring": ""
+          }
+        }
+      },
+      "package": {
+        "path": "iorw/eofclose.go",
+        "name": "iorw"
+      },
+      "_": {
+        "EOFCloseSeekReader": {
+          "type": "type",
+          "ident": "EOFCloseSeekReader",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "r": "io.Reader",
+            "rc": "io.Closer",
+            "rs": "io.Seeker",
+            "size": "int64",
+            "bfr": "*bufio.Reader",
+            "//Reader": "Api",
+            "canclose": "bool"
+          }
+        },
+        "NewEOFCloseSeekReader": {
+          "type": "func",
+          "ident": "NewEOFCloseSeekReader",
+          "return": "*EOFCloseSeekReader",
+          "params": {
+            "r": "io.Reader",
+            "canclose": "...bool"
+          },
+          "docstring": ""
+        },
+        "ReadRune": {
+          "type": "func",
+          "ident": "ReadRune",
+          "return": "rune,",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "Readln": {
+          "type": "func",
+          "ident": "Readln",
+          "return": "string,",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "Readlines": {
+          "type": "func",
+          "ident": "Readlines",
+          "return": "[]string,",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "ReadAll": {
+          "type": "func",
+          "ident": "ReadAll",
+          "return": "error",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "Size": {
+          "type": "func",
+          "ident": "Size",
+          "return": "int64",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "Seek": {
+          "type": "func",
+          "ident": "Seek",
+          "return": "int64,",
+          "struct": "EOFCloseSeekReader",
+          "params": {
+            "offset": "int64",
+            "whence": "int"
+          },
+          "docstring": ""
+        },
+        "Read": {
+          "type": "func",
+          "ident": "Read",
+          "return": "int,",
+          "struct": "EOFCloseSeekReader",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": ""
+        },
+        "disposeReader": {
+          "type": "func",
+          "ident": "disposeReader",
+          "return": "error",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "return": "error",
+          "struct": "EOFCloseSeekReader",
+          "params": {},
+          "docstring": ""
+        }
+      },
+      "jsonrw": {
+        "package": {
+          "path": "iorw/jsonrw/jsonreader.go",
+          "name": "jsonrw"
+        },
+        "_": {
+          "ReaderParser": {
+            "type": "type",
+            "ident": "ReaderParser",
+            "base": "struct",
+            "docstring": "ReaderParser - struct",
+            "members": {
+              "rdr": "io.Reader",
+              "dcdr": "*json.Decoder",
+              "Delim": "json.Delim",
+              "IsDelim": "bool",
+              "String": "string",
+              "IsString": "bool",
+              "IsNumber": "bool",
+              "Float": "float64",
+              "Int": "int64",
+              "IsFloat": "bool",
+              "IsBool": "bool",
+              "Bool": "bool",
+              "IsNull": "bool",
+              "": "",
+              "PrevToken": "json.Token",
+              "Token": "json.Token",
+              "Depth": "int"
+            }
+          },
+          "NewReaderParser": {
+            "type": "func",
+            "ident": "NewReaderParser",
+            "return": "*ReaderParser",
+            "params": {
+              "r": "io.Reader"
+            },
+            "docstring": "NewReaderParser - JSON Reader Parser"
+          },
+          "PopulateMap": {
+            "type": "func",
+            "ident": "PopulateMap",
+            "return": "error",
+            "struct": "ReaderParser",
+            "params": {
+              "mptopop": "map[string]interface{}"
+            },
+            "docstring": "PopulateMap - populate map[string]interface{}"
+          },
+          "PopulateArray": {
+            "type": "func",
+            "ident": "PopulateArray",
+            "return": "error",
+            "struct": "ReaderParser",
+            "params": {
+              "arr": "[]interface{}"
+            },
+            "docstring": "PopulateArray - populate []interface{}"
+          },
+          "setValueState": {
+            "type": "func",
+            "ident": "setValueState",
+            "struct": "ReaderParser",
+            "params": {},
+            "docstring": ""
+          },
+          "More": {
+            "type": "func",
+            "ident": "More",
+            "return": "bool,",
+            "struct": "ReaderParser",
+            "params": {
+              "jsonevent": "...func"
+            },
+            "docstring": "More - wrap arround json.Decoder.More"
+          }
+        }
+      },
+      "messaging": {
+        "package": {
+          "path": "iorw/messaging/messaging.go",
+          "name": "messaging"
+        },
+        "_": {
+          "MessageManager": {
+            "type": "type",
+            "ident": "MessageManager",
+            "base": "struct",
+            "docstring": "MessageManager - struct",
+            "members": {
+              "messangers": "map[string]*Messanger"
+            }
+          },
+          "Messanger": {
+            "type": "type",
+            "ident": "Messanger",
+            "base": "struct",
+            "docstring": "Messanger - struct",
+            "members": {
+              "guid": "string",
+              "name": "string",
+              "prntrdr": "iorw.PrinterReader"
+            }
+          },
+          "Print": {
+            "type": "func",
+            "ident": "Print",
+            "return": "error",
+            "struct": "MessageManager",
+            "params": {
+              "pr": "iorw.PrinterReader",
+              "a": "...interface{}"
+            },
+            "docstring": "Print print to"
+          }
+        }
+      }
+    },
+  "package": {
+      "path": "kwe.go",
+      "name": "main"
+    },
+  "_": {
+      "main": {
+        "type": "func",
+        "ident": "main",
+        "params": {},
+        "docstring": ""
+      }
+    },
+  "listen": {
+      "package": {
+        "path": "listen/server.go",
+        "name": "listen"
+      },
+      "_": {}
+    },
+  "logging": {
+      "package": {
+        "path": "logging/logging.go",
+        "name": "logging"
+      },
+      "_": {
+        "Log": {
+          "type": "type",
+          "ident": "Log",
+          "base": "struct",
+          "docstring": "",
+          "members": {}
+        },
+        "Write": {
+          "type": "func",
+          "ident": "Write",
+          "return": "int,",
+          "struct": "Log",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": ""
+        },
+        "WriteLevel": {
+          "type": "func",
+          "ident": "WriteLevel",
+          "return": "int,",
+          "struct": "Log",
+          "params": {
+            "level": "zerolog.Level",
+            "p": "[]byte"
+          },
+          "docstring": ""
+        },
+        "NewLogger": {
+          "type": "func",
+          "ident": "NewLogger",
+          "return": "interface{}",
+          "params": {
+            "lg": "*Log"
+          },
+          "docstring": ""
+        }
+      }
+    },
+  "mimes": {
+      "package": {
+        "path": "mimes/mimetypes.go",
+        "name": "mimes"
+      },
+      "_": {
+        "string)": {
+          "type": "type",
+          "ident": "string)",
+          "base": "bool)",
+          "docstring": "",
+          "members": {
+            "if": "default"
+          }
+        },
+        "==": {
+          "type": "type",
+          "ident": "==",
+          "base": "\"\"",
+          "docstring": "",
+          "members": {
+            "default": "default"
+          }
+        },
+        "=": {
+          "type": "type",
+          "ident": "=",
+          "base": "init()",
+          "docstring": "",
+          "members": {
+            "mtypesfound": "map[string]string{}",
+            "mtextexts": "map[string]bool{}",
+            "mtextexts[\".js\"]": "true",
+            "mtextexts[\".json\"]": "true",
+            "mtextexts[\".html\"]": "true",
+            "mtextexts[\".xhtml\"]": "true",
+            "mtextexts[\".htm\"]": "true"
+          }
+        },
+        "MimeTypesCSV": {
+          "type": "func",
+          "ident": "MimeTypesCSV",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": "MimeTypesCSV - return Mime Types CSV reader"
+        },
+        "FindMimeType": {
+          "type": "func",
+          "ident": "FindMimeType",
+          "return": "string,",
+          "params": {
+            "ext": "string",
+            "defaulttype": "string"
+          },
+          "docstring": "FindMimeType - ext or defaulttype"
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "mqtt": {
+      "package": {
+        "path": "mqtt/mqttmngr.go",
+        "name": "mqtt"
+      },
+      "_": {
+        "Topic": {
+          "type": "func",
+          "ident": "Topic",
+          "return": "string",
+          "struct": "activeTopic",
+          "params": {},
+          "docstring": ""
+        },
+        "activeTopic": {
+          "type": "type",
+          "ident": "activeTopic",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "topic": "string",
+            "topicpath": "string"
+          }
+        },
+        "MqttMessaging": {
+          "type": "type",
+          "ident": "MqttMessaging",
+          "base": "interface",
+          "docstring": "",
+          "members": {
+            "Event()": "string",
+            "EventPath()": "string",
+            "MqttConnection()": "*MQTTConnection",
+            "MqttManager()": "*MQTTManager",
+            "Args()": "map[string]interface{}"
+          }
+        },
+        "mqttEvent": {
+          "type": "type",
+          "ident": "mqttEvent",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "event": "string",
+            "eventpath": "string",
+            "mqttcn": "*MQTTConnection",
+            "mqttmngr": "*MQTTManager",
+            "args": "map[string]interface{}"
+          }
+        },
+        "mqttEventContainer": {
+          "type": "type",
+          "ident": "mqttEventContainer",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "event": "string",
+            "eventpath": "string",
+            "args": "map[string]interface{}"
+          }
+        },
+        "MqttEventing": {
+          "type": "type",
+          "ident": "MqttEventing",
+          "base": "error)",
+          "docstring": "",
+          "members": {
+            "if": "{",
+            "mqttmsng(message)": "mqttmsng(message)",
+            "}": "}",
+            "return": "return"
+          }
+        },
+        "MQTTManager": {
+          "type": "type",
+          "ident": "MQTTManager",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "lck": "*sync.RWMutex",
+            "cntns": "map[string]*MQTTConnection",
+            "activeTopics": "map[string]*activeTopic",
+            "defaulttopicpath": "string",
+            "lcktpcs": "*sync.RWMutex",
+            "MqttMessaging": "MqttMessaging",
+            "mqttevents": "map[string]*mqttEventContainer",
+            "lckevents": "*sync.RWMutex",
+            "MqttEventing": "MqttEventing",
+            "defaulteventpath": "string"
+          }
+        },
+        "TopicPath": {
+          "type": "func",
+          "ident": "TopicPath",
+          "return": "string",
+          "struct": "activeTopic",
+          "params": {},
+          "docstring": ""
+        },
+        "Event": {
+          "type": "func",
+          "ident": "Event",
+          "return": "string",
+          "struct": "mqttEvent",
+          "params": {},
+          "docstring": ""
+        },
+        "EventPath": {
+          "type": "func",
+          "ident": "EventPath",
+          "return": "string",
+          "struct": "mqttEvent",
+          "params": {},
+          "docstring": ""
+        },
+        "MqttConnection": {
+          "type": "func",
+          "ident": "MqttConnection",
+          "return": "*MQTTConnection",
+          "struct": "mqttEvent",
+          "params": {},
+          "docstring": ""
+        },
+        "MqttManager": {
+          "type": "func",
+          "ident": "MqttManager",
+          "return": "*MQTTManager",
+          "struct": "mqttEvent",
+          "params": {},
+          "docstring": ""
+        },
+        "Args": {
+          "type": "func",
+          "ident": "Args",
+          "return": "map[string]interface{}",
+          "struct": "mqttEvent",
+          "params": {},
+          "docstring": ""
+        },
+        "processMessage": {
+          "type": "func",
+          "ident": "processMessage",
+          "return": "error",
+          "struct": "activeTopic",
+          "params": {
+            "mqttmsng": "MqttMessaging",
+            "message": "Message"
+          },
+          "docstring": ""
+        },
+        "NewMQTTManager": {
+          "type": "func",
+          "ident": "NewMQTTManager",
+          "return": "*MQTTManager",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "ActiveTopics": {
+          "type": "func",
+          "ident": "ActiveTopics",
+          "return": "map[string]string",
+          "struct": "MQTTManager",
+          "params": {},
+          "docstring": ""
+        },
+        "Connections": {
+          "type": "func",
+          "ident": "Connections",
+          "return": "[]string",
+          "struct": "MQTTManager",
+          "params": {},
+          "docstring": ""
+        },
+        "Connection": {
+          "type": "func",
+          "ident": "Connection",
+          "return": "*MQTTConnection",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "ConnectionInfo": {
+          "type": "func",
+          "ident": "ConnectionInfo",
+          "return": "string",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "ConnectionExist": {
+          "type": "func",
+          "ident": "ConnectionExist",
+          "return": "bool",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "RegisterConnection": {
+          "type": "func",
+          "ident": "RegisterConnection",
+          "return": "string,",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "Fprint": {
+          "type": "func",
+          "ident": "Fprint",
+          "return": "io.Writer",
+          "struct": "MQTTManager",
+          "params": {
+            "w": "io.Writer"
+          },
+          "docstring": ""
+        },
+        "String": {
+          "type": "func",
+          "ident": "String",
+          "return": "string",
+          "struct": "MQTTManager",
+          "params": {},
+          "docstring": ""
+        },
+        "UnregisterConnection": {
+          "type": "func",
+          "ident": "UnregisterConnection",
+          "return": "...string",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "...string"
+          },
+          "docstring": ""
+        },
+        "messageReceived": {
+          "type": "func",
+          "ident": "messageReceived",
+          "return": "*MQTTConnection,",
+          "struct": "MQTTManager",
+          "params": {
+            "mqttcn": "*MQTTConnection",
+            "alias": "string",
+            "msg": "*mqttMessage"
+          },
+          "docstring": ""
+        },
+        "Connected": {
+          "type": "func",
+          "ident": "Connected",
+          "return": "string",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "fireAliasEvent": {
+          "type": "func",
+          "ident": "fireAliasEvent",
+          "return": "string,",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "event": "string",
+            "err": "error"
+          },
+          "docstring": ""
+        },
+        "Disconnected": {
+          "type": "func",
+          "ident": "Disconnected",
+          "return": "string,",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "err": "error"
+          },
+          "docstring": ""
+        },
+        "IsConnect": {
+          "type": "func",
+          "ident": "IsConnect",
+          "return": "bool",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "Connect": {
+          "type": "func",
+          "ident": "Connect",
+          "return": "error",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "Disconnect": {
+          "type": "func",
+          "ident": "Disconnect",
+          "return": "error",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "quiesce": "uint"
+          },
+          "docstring": ""
+        },
+        "IsSubscribed": {
+          "type": "func",
+          "ident": "IsSubscribed",
+          "return": "bool",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "topic": "string"
+          },
+          "docstring": ""
+        },
+        "Subscriptions": {
+          "type": "func",
+          "ident": "Subscriptions",
+          "return": "[]*mqttsubscription",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string"
+          },
+          "docstring": ""
+        },
+        "Subscribe": {
+          "type": "func",
+          "ident": "Subscribe",
+          "return": "error",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "topic": "string",
+            "qos": "byte"
+          },
+          "docstring": ""
+        },
+        "Unsubscribe": {
+          "type": "func",
+          "ident": "Unsubscribe",
+          "return": "error",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "topic": "string"
+          },
+          "docstring": ""
+        },
+        "Publish": {
+          "type": "func",
+          "ident": "Publish",
+          "return": "error",
+          "struct": "MQTTManager",
+          "params": {
+            "alias": "string",
+            "topic": "string",
+            "qos": "byte",
+            "retained": "bool",
+            "message": "string"
+          },
+          "docstring": ""
+        },
+        "ActivateTopic": {
+          "type": "func",
+          "ident": "ActivateTopic",
+          "return": "string,",
+          "struct": "MQTTManager",
+          "params": {
+            "topic": "string",
+            "topicpath": "...string"
+          },
+          "docstring": ""
+        },
+        "DeactivateTopic": {
+          "type": "func",
+          "ident": "DeactivateTopic",
+          "return": "string",
+          "struct": "MQTTManager",
+          "params": {
+            "topic": "string"
+          },
+          "docstring": ""
+        },
+        "ValidEvents": {
+          "type": "func",
+          "ident": "ValidEvents",
+          "return": "[]string",
+          "struct": "MQTTManager",
+          "params": {},
+          "docstring": ""
+        },
+        "ActivateEvent": {
+          "type": "func",
+          "ident": "ActivateEvent",
+          "return": "string,",
+          "struct": "MQTTManager",
+          "params": {
+            "event": "string",
+            "eventpath": "string",
+            "args": "...map[string]interface{}"
+          },
+          "docstring": ""
+        },
+        "DeactivateEvent": {
+          "type": "func",
+          "ident": "DeactivateEvent",
+          "return": "string",
+          "struct": "MQTTManager",
+          "params": {
+            "event": "string"
+          },
+          "docstring": ""
+        },
+        "GLOBALMQTTMANAGER": {
+          "type": "func",
+          "ident": "GLOBALMQTTMANAGER",
+          "return": "*MQTTManager",
+          "params": {},
+          "docstring": ""
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "osprc": {
+      "package": {
+        "path": "osprc/command.go",
+        "name": "osprc"
+      },
+      "_": {
+        "Command": {
+          "type": "type",
+          "ident": "Command",
+          "base": "struct",
+          "docstring": "Command - struct",
+          "members": {
+            "excmd": "*exec.Cmd",
+            "OnClose": "func(int)",
+            "excmdprcid": "int",
+            "ctx": "context.Context",
+            "ctxcancel": "context.CancelFunc",
+            "cmdin": "io.WriteCloser",
+            "bfr": "*bufio.Reader",
+            "cmdout": "io.ReadCloser",
+            "cmdoutp": "[]byte",
+            "cmdouterr": "error",
+            "cmdtmpp": "[]byte",
+            "cmdtmppi": "int",
+            "cmdtmppl": "int",
+            "stdinpark": "[]byte",
+            "stdinparkl": "int",
+            "stdinparki": "int",
+            "cancmdout": "bool",
+            "milseconds": "int64"
+          }
+        },
+        "NewCommand": {
+          "type": "func",
+          "ident": "NewCommand",
+          "return": "*Command,",
+          "params": {
+            "execpath": "string",
+            "execargs": "...string"
+          },
+          "docstring": "NewCommand return cmd *Command instance or err error"
+        },
+        "SetReadTimeout": {
+          "type": "func",
+          "ident": "SetReadTimeout",
+          "return": "int64",
+          "struct": "Command",
+          "params": {
+            "milseconds": "int64"
+          },
+          "docstring": "SetReadTimeout set read timeout in milliseconds int64"
+        },
+        "PrcID": {
+          "type": "func",
+          "ident": "PrcID",
+          "return": "int",
+          "struct": "Command",
+          "params": {},
+          "docstring": "PrcID underlying os Process ID"
+        },
+        "Print": {
+          "type": "func",
+          "ident": "Print",
+          "return": "...interface{}",
+          "struct": "Command",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "Print - similar to fmt.Fprint just direct on *Command"
+        },
+        "Println": {
+          "type": "func",
+          "ident": "Println",
+          "return": "...interface{}",
+          "struct": "Command",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "Println - similar to fmt.Fprint just direct on *Command"
+        },
+        "Readln": {
+          "type": "func",
+          "ident": "Readln",
+          "return": "string,",
+          "struct": "Command",
+          "params": {},
+          "docstring": "Readln - read line from cmd and return s string or err error"
+        },
+        "Readlines": {
+          "type": "func",
+          "ident": "Readlines",
+          "return": "[]string,",
+          "struct": "Command",
+          "params": {},
+          "docstring": "Readlines - read lines []string from cmd or err error"
+        },
+        "ReadAll": {
+          "type": "func",
+          "ident": "ReadAll",
+          "return": "string,",
+          "struct": "Command",
+          "params": {},
+          "docstring": "ReadAll read and return content as s string or err error"
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "return": "error",
+          "struct": "Command",
+          "params": {},
+          "docstring": "Close - *Command"
+        },
+        "ReadRune": {
+          "type": "func",
+          "ident": "ReadRune",
+          "return": "rune,",
+          "struct": "Command",
+          "params": {},
+          "docstring": "ReadRune - refer to io.RuneReader"
+        },
+        "Dir": {
+          "type": "func",
+          "ident": "Dir",
+          "return": "string",
+          "struct": "Command",
+          "params": {},
+          "docstring": "Dir return executing command directory"
+        },
+        "Read": {
+          "type": "func",
+          "ident": "Read",
+          "return": "int,",
+          "struct": "Command",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": "Read - refer to io.Reader"
+        },
+        "Write": {
+          "type": "func",
+          "ident": "Write",
+          "return": "int,",
+          "struct": "Command",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": "Write - refer to io.Writer"
+        }
+      }
+    },
+  "parameters": {
+      "package": {
+        "path": "parameters/parameters.go",
+        "name": "parameters"
+      },
+      "_": {
+        "Parameters": {
+          "type": "type",
+          "ident": "Parameters",
+          "base": "struct",
+          "docstring": "Parameters -> structure containing parameters",
+          "members": {
+            "standard": "map[string][]string",
+            "filesdata": "map[string][]interface{}"
+          }
+        },
+        "StandardKeys": {
+          "type": "func",
+          "ident": "StandardKeys",
+          "return": "[]string",
+          "struct": "Parameters",
+          "params": {},
+          "docstring": "StandardKeys - list of standard parameters names (keys)"
+        },
+        "FileKeys": {
+          "type": "func",
+          "ident": "FileKeys",
+          "return": "[]string",
+          "struct": "Parameters",
+          "params": {},
+          "docstring": "FileKeys - list of file parameters names (keys)"
+        },
+        "SetParameter": {
+          "type": "func",
+          "ident": "SetParameter",
+          "return": "string,",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "clear": "bool",
+            "pvalue": "...string"
+          },
+          "docstring": "SetParameter -> set or append parameter value\npname : name\npvalue : value of strings to add\nclear : clear existing value of parameter"
+        },
+        "ContainsParameter": {
+          "type": "func",
+          "ident": "ContainsParameter",
+          "return": "bool",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string"
+          },
+          "docstring": "ContainsParameter -> check if parameter exist\npname : name"
+        },
+        "RemoveParameter": {
+          "type": "func",
+          "ident": "RemoveParameter",
+          "return": "[]string",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string"
+          },
+          "docstring": "RemoveParameter  -> remove parameter and return any slice of string value"
+        },
+        "SetFileParameter": {
+          "type": "func",
+          "ident": "SetFileParameter",
+          "return": "string,",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "clear": "bool",
+            "pfile": "...interface{}"
+          },
+          "docstring": "SetFileParameter -> set or append file parameter value\npname : name\npfile : value of interface to add either FileHeader from mime/multipart or any io.Reader implementation\nclear : clear existing value of parameter"
+        },
+        "ContainsFileParameter": {
+          "type": "func",
+          "ident": "ContainsFileParameter",
+          "return": "bool",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string"
+          },
+          "docstring": "ContainsFileParameter -> check if file parameter exist\npname : name"
+        },
+        "Parameter": {
+          "type": "func",
+          "ident": "Parameter",
+          "return": "[]string",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "index": "...int"
+          },
+          "docstring": "Parameter - return a specific parameter values"
+        },
+        "StringParameter": {
+          "type": "func",
+          "ident": "StringParameter",
+          "return": "string",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "sep": "string",
+            "index": "...int"
+          },
+          "docstring": "StringParameter return parameter as string concatenated with sep"
+        },
+        "FileReader": {
+          "type": "func",
+          "ident": "FileReader",
+          "return": "[]io.Reader",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "index": "...int"
+          },
+          "docstring": "FileReader return file parameter - array of io.Reader"
+        },
+        "FileName": {
+          "type": "func",
+          "ident": "FileName",
+          "return": "[]string",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "index": "...int"
+          },
+          "docstring": "FileName return file parameter name - array of string"
+        },
+        "FileSize": {
+          "type": "func",
+          "ident": "FileSize",
+          "return": "[]int64",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "index": "...int"
+          },
+          "docstring": "FileSize return file parameter size - array of int64)"
+        },
+        "FileParameter": {
+          "type": "func",
+          "ident": "FileParameter",
+          "return": "[]interface{}",
+          "struct": "Parameters",
+          "params": {
+            "pname": "string",
+            "index": "...int"
+          },
+          "docstring": "FileParameter return file paramater - array of file"
+        },
+        "CleanupParameters": {
+          "type": "func",
+          "ident": "CleanupParameters",
+          "struct": "Parameters",
+          "params": {},
+          "docstring": "CleanupParameters function that can be called to assist in cleaning up instance of Parameter container"
+        },
+        "NewParameters": {
+          "type": "func",
+          "ident": "NewParameters",
+          "return": "*Parameters",
+          "params": {},
+          "docstring": "NewParameters return new instance of Paramaters container"
+        },
+        "LoadParametersFromRawURL": {
+          "type": "func",
+          "ident": "LoadParametersFromRawURL",
+          "return": "*Parameters,",
+          "params": {
+            "params": "*Parameters",
+            "rawURL": "string"
+          },
+          "docstring": "LoadParametersFromRawURL - populate paramaters just from raw url"
+        },
+        "LoadParametersFromHTTPRequest": {
+          "type": "func",
+          "ident": "LoadParametersFromHTTPRequest",
+          "return": "*Parameters,",
+          "params": {
+            "params": "*Parameters",
+            "r": "*http.Request"
+          },
+          "docstring": "LoadParametersFromHTTPRequest - Load Parameters from http.Request"
+        }
+      }
+    },
+  "requirejs": {
+      "package": {
+        "path": "requirejs/require.go",
+        "name": "requirejs"
+      },
+      "_": {
+        "=": {
+          "type": "type",
+          "ident": "=",
+          "base": "url)",
+          "docstring": "",
+          "members": {
+            "var": "context;",
+            "node;": "node;",
+            "if": "{",
+            "//In": "very",
+            "node": "getInteractiveScript();",
+            "": "",
+            "node.setAttribute('data-requirecontext',": "context.contextName);",
+            "node.setAttribute('data-requiremodule',": "moduleName);",
+            "//Set": "info.",
+            "//a": "firings",
+            "//that": "need",
+            "//addEventListener": "a",
+            "//script": "so",
+            "//https://connect.microsoft.com/IE/feedback/details/648057/script-onload-event-is-not-fired-immediately-after-script-execution": "//https://connect.microsoft.com/IE/feedback/details/648057/script-onload-event-is-not-fired-immediately-after-script-execution",
+            "//UNFORTUNATELY": "script",
+            "//Check": "or",
+            "//natively": "browser",
+            "//read": "https://github.com/requirejs/requirejs/issues/187",
+            "//if": "supported.",
+            "//in": "callback.",
+            "//Note": "see:",
+            "//https://github.com/requirejs/requirejs/issues/273": "//https://github.com/requirejs/requirejs/issues/273",
+            "!(node.attachEvent.toString": "&&",
+            "!isOpera)": "{",
+            "//Probably": "fire",
+            "//we": "name.",
+            "//However,": "'interactive'",
+            "//readyState": "call.",
+            "useInteractive": "true;",
+            "node.attachEvent('onreadystatechange',": "context.onScriptLoad);",
+            "//It": "catch",
+            "//404s": "before",
+            "//the": "addEventListener",
+            "//is": "cannot",
+            "//use": "issue",
+            "//mentioned": "execute,",
+            "//then": "execute",
+            "//next": "do.",
+            "//Best": "issues,",
+            "//and": "6-9.",
+            "//node.attachEvent('onerror',": "context.onScriptError);",
+            "}": "}",
+            "node.addEventListener('load',": "false);",
+            "node.addEventListener('error',": "false);",
+            "node.src": "url;",
+            "//Calling": "been",
+            "//set,": "DOM.",
+            "config.onNodeCreated(node,": "url);",
+            "//For": "end",
+            "//of": "define",
+            "//call": "on",
+            "//to": "the",
+            "currentlyAddingScript": "null;",
+            "head.insertBefore(node,": "baseElement);",
+            "head.appendChild(node);": "head.appendChild(node);",
+            "return": "strings.NewReader(requirevocertjs)",
+            "try": "{",
+            "//efficient": "until",
+            "//its": "workers",
+            "//are": "so",
+            "//": "https://webkit.org/b/153317",
+            "setTimeout(function()": "0);",
+            "importScripts(url);": "importScripts(url);",
+            "//Account": "modules",
+            "context.completeLoad(moduleName);": "context.completeLoad(moduleName);",
+            "context.onError(makeError('importscripts',": "context.onError(makeError('importscripts',",
+            "'importScripts": "+",
+            "moduleName": "url,",
+            "e,": "e,",
+            "[moduleName]));": "[moduleName]));",
+            "//begin": "evocert------------------------",
+            "else{": "else{",
+            "//console.Log(url);": "//console.Log(url);",
+            "canLoadMod=false;": "canLoadMod=false;",
+            "fsutilcode=_scriptinclude(url);": "fsutilcode=_scriptinclude(url);",
+            "_parseEval(fsutilcode);": "_parseEval(fsutilcode);",
+            "canLoadMod=true;": "canLoadMod=true;",
+            "eval(fsutilcode);": "eval(fsutilcode);",
+            "fsutilcode=fsutils.File2String(url);": "fsutilcode=fsutils.File2String(url);",
+            "console.Log(ferr);": "console.Log(ferr);",
+            "context.completeLoad(data.id);": "context.completeLoad(data.id);",
+            "//end": "evocert------------------------",
+            "};": "};",
+            "function": "{",
+            "eachReverse(scripts(),": "{",
+            "});": "});",
+            "//Look": "page",
+            "//Figure": "it.",
+            "//using": "parent.",
+            "head": "script.parentNode;",
+            "//baseUrl,": "set.",
+            "dataMain": "script.getAttribute('data-main');",
+            "//Preserve": "'?')",
+            "mainScript": "dataMain;",
+            "//but": "args.",
+            "//module": "ID.",
+            "//Pull": "the",
+            "//baseUrl.": "//baseUrl.",
+            "src": "mainScript.split('/');",
+            "subPath": "'./';",
+            "cfg.baseUrl": "subPath;",
+            "//Strip": "now",
+            "//like": "name.",
+            "//If": "interactive",
+            "//Put": "load.",
+            "cfg.deps": "[mainScript];",
+            "/**": "/**",
+            "*": "execute/evaluate.",
+            "*/": "*/",
+            "define": "{",
+            "//Allow": "modules",
+            "//Adjust": "appropriately",
+            "callback": "callback",
+            "deps": "'module']).concat(deps);",
+            "name": "node.getAttribute('data-requiremodule');",
+            "//This": "prematurely",
+            "//CommonJS": "dependencies.",
+            "//Remove": "string,",
+            "//look": "dependencies,",
+            ".toString()": ".toString()",
+            ".replace(commentRegExp,": "commentReplace)",
+            ".replace(cjsRequireRegExp,": "{",
+            "deps.push(dep);": "deps.push(dep);",
+            "//May": "still",
+            "//could": "module",
+            "//work": "require.",
+            "//REQUIRES": "the",
+            "//order": "below.",
+            "//work.": "//work.",
+            "context": "contexts[node.getAttribute('data-requirecontext')];",
+            "//Always": "handler.",
+            "//tracing": "support,",
+            "//where": "event",
+            "//occurs.": "processed",
+            "context.defQueue.push([name,": "callback]);",
+            "context.defQueueMap[name]": "true;",
+            "globalDefQueue.push([name,": "callback]);",
+            "define.amd": "{",
+            "jQuery:": "true",
+            "req.exec": "{",
+            "/*jslint": "*/",
+            "req(cfg);": "req(cfg);",
+            "}(this,": "setTimeout)));",
+            "`": "`",
+            "//RequireJS": "code",
+            "func": "{"
+          }
+        },
+        "===": {
+          "type": "type",
+          "ident": "===",
+          "base": "evt.srcElement).readyState)))",
+          "docstring": "",
+          "members": {
+            "//Reset": "for",
+            "//to": "long.",
+            "interactiveScript": "null;",
+            "": "",
+            "//Pull": "context.",
+            "var": "?",
+            "context.completeLoad(data.id);": "context.completeLoad(data.id);",
+            "}": "}",
+            "},": "},",
+            "/**": "/**",
+            "*": "envs.",
+            "*/": "*/",
+            "onScriptError:": "{",
+            "if": "{",
+            "eachProp(registry,": "{",
+            "each(value.depMaps,": "{",
+            "parents.push(key);": "parents.push(key);",
+            "return": "arguments);",
+            "});": "});",
+            "(parents.length": "?",
+            "'\",": ":",
+            "'\"'),": "[data.id]));",
+            "};": "};",
+            "context.require": "context.makeRequire();",
+            "req": "{",
+            "//Find": "default",
+            "contextName": "config.context;",
+            "//": "dependencies",
+            "config": "deps;",
+            "deps": "[];",
+            "callback": "errback;",
+            "errback": "optional;",
+            "context": "req.s.newContext(contextName);",
+            "context.configure(config);": "context.configure(config);",
+            "req.config": "{",
+            "req.nextTick": "{",
+            "setTimeout(fn,": "4);",
+            "require": "req;",
+            "req.version": "version;",
+            "//Used": "paths.",
+            "req.jsExtRegExp": "/^\\/|:|\\?|\\.js$/;",
+            "req.isBrowser": "isBrowser;",
+            "s": "{",
+            "contexts:": "contexts,",
+            "newContext:": "newContext",
+            "//Create": "context.",
+            "req({});": "req({});",
+            "//Exports": "require.",
+            "each([": "each([",
+            "'toUrl',": "'toUrl',",
+            "'undef',": "'undef',",
+            "'defined',": "'defined',",
+            "'specified'": "'specified'",
+            "],": "{",
+            "//Reference": "context,",
+            "//so": "context",
+            "//with": "used.",
+            "req[prop]": "{",
+            "head": "baseElement.parentNode;",
+            "//If": "IE6.",
+            "//When": "bug:",
+            "//http://dev.jquery.com/ticket/2709": "//http://dev.jquery.com/ticket/2709",
+            "baseElement": "document.getElementsByTagName('base')[0];",
+            "req.onError": "defaultOnError;",
+            "req.createNode": "{",
+            "document.createElementNS('http://www.w3.org/1999/xhtml',": ":",
+            "document.createElement('script');": "document.createElement('script');",
+            "node.": "node."
+          }
+        },
+        "returns\n    * a true value, it will break out of the loop.\n    */\n   function each": {
+          "type": "func",
+          "ident": "returns\n    * a true value, it will break out of the loop.\n    */\n   function each",
+          "return": "func",
+          "params": {},
+          "docstring": ""
+        },
+        "returns\n     * a true value, it will break out of the loop.\n     */\n    function each": {
+          "type": "func",
+          "ident": "returns\n     * a true value, it will break out of the loop.\n     */\n    function each",
+          "return": "func",
+          "params": {},
+          "docstring": ""
+        },
+        "RequireJS": {
+          "type": "func",
+          "ident": "RequireJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": "RequireJS return io.Reader of require.js code"
+        },
+        "RequireJSString": {
+          "type": "func",
+          "ident": "RequireJSString",
+          "return": "string",
+          "params": {},
+          "docstring": "RequireJSString return string of require.js code"
+        },
+        "RequireMinJS": {
+          "type": "func",
+          "ident": "RequireMinJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": "RequireMinJS return io.Reader of require.min.js code"
+        },
+        "RequireMinJSString": {
+          "type": "func",
+          "ident": "RequireMinJSString",
+          "return": "string",
+          "params": {},
+          "docstring": "RequireMinJSString return string of require.min.js code"
+        }
+      }
+    },
+  "resources": {
+      "package": {
+        "path": "resources/resourcingmanager.go",
+        "name": "resources"
+      },
+      "_": {
+        "ResourcingManager": {
+          "type": "type",
+          "ident": "ResourcingManager",
+          "base": "struct",
+          "docstring": "ResourcingManager - struct",
+          "members": {
+            "fsutils": "*fsutils.FSUtils",
+            "rsngpaths": "map[string]string",
+            "rsngrootpaths": "map[string]*ResourcingEndpoint"
+          }
+        },
+        "FS": {
+          "type": "func",
+          "ident": "FS",
+          "return": "*fsutils.FSUtils",
+          "struct": "ResourcingManager",
+          "params": {},
+          "docstring": "FS return fsutils.FSUtils implementation for *ResourcingManager"
+        },
+        "findrsendpnt": {
+          "type": "func",
+          "ident": "findrsendpnt",
+          "return": "*ResourcingEndpoint,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "findrsendpnts": {
+          "type": "func",
+          "ident": "findrsendpnts",
+          "return": "[]*ResourcingEndpoint,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...string"
+          },
+          "docstring": ""
+        },
+        "findrsendpntpaths": {
+          "type": "func",
+          "ident": "findrsendpntpaths",
+          "return": "[]*ResourcingEndpoint,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...string"
+          },
+          "docstring": ""
+        },
+        "fsappend": {
+          "type": "func",
+          "ident": "fsappend",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "fsset": {
+          "type": "func",
+          "ident": "fsset",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string",
+            "a": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "fscat": {
+          "type": "func",
+          "ident": "fscat",
+          "return": "io.Reader",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fscats": {
+          "type": "func",
+          "ident": "fscats",
+          "return": "string",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fspipe": {
+          "type": "func",
+          "ident": "fspipe",
+          "return": "io.Reader",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fspipes": {
+          "type": "func",
+          "ident": "fspipes",
+          "return": "string",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fstouch": {
+          "type": "func",
+          "ident": "fstouch",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fsmv": {
+          "type": "func",
+          "ident": "fsmv",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string",
+            "destpath": "string"
+          },
+          "docstring": ""
+        },
+        "fsrm": {
+          "type": "func",
+          "ident": "fsrm",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": ""
+        },
+        "fsmkdirall": {
+          "type": "func",
+          "ident": "fsmkdirall",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "fsmkdir": {
+          "type": "func",
+          "ident": "fsmkdir",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "fsls": {
+          "type": "func",
+          "ident": "fsls",
+          "return": "[]fsutils.FileInfo",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...string"
+          },
+          "docstring": ""
+        },
+        "fsfind": {
+          "type": "func",
+          "ident": "fsfind",
+          "return": "[]fsutils.FileInfo,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...string"
+          },
+          "docstring": ""
+        },
+        "RemovePathResource": {
+          "type": "func",
+          "ident": "RemovePathResource",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "RemovePathResource - Remove Endpoint Resource via path"
+        },
+        "EndpointViaRootPath": {
+          "type": "func",
+          "ident": "EndpointViaRootPath",
+          "return": "*ResourcingEndpoint",
+          "struct": "ResourcingManager",
+          "params": {
+            "rootpath": "string"
+          },
+          "docstring": "EndpointViaRootPath return ResourcingEndpoint via root path"
+        },
+        "EndpointViaPath": {
+          "type": "func",
+          "ident": "EndpointViaPath",
+          "return": "*ResourcingEndpoint",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "EndpointViaPath return ResourcingEndpoint via path"
+        },
+        "EndpointResource": {
+          "type": "func",
+          "ident": "EndpointResource",
+          "return": "interface{}",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "EndpointResource - Endpoint embedded resource via path"
+        },
+        "UnregisterPaths": {
+          "type": "func",
+          "ident": "UnregisterPaths",
+          "return": "...string",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "...string"
+          },
+          "docstring": "UnregisterPaths unregister multiple paths"
+        },
+        "RegisteredRootPaths": {
+          "type": "func",
+          "ident": "RegisteredRootPaths",
+          "return": "[]string",
+          "struct": "ResourcingManager",
+          "params": {},
+          "docstring": "RegisteredRootPaths return registered rootpaths"
+        },
+        "IsRegisteredPath": {
+          "type": "func",
+          "ident": "IsRegisteredPath",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "IsRegisteredPath return true indicating if a path is registered"
+        },
+        "IsRegisteredRootPath": {
+          "type": "func",
+          "ident": "IsRegisteredRootPath",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "rootpath": "string"
+          },
+          "docstring": "IsRegisteredRootPath return true indicating if a rootpath is registered"
+        },
+        "RegisteredPaths": {
+          "type": "func",
+          "ident": "RegisteredPaths",
+          "return": "[]string",
+          "struct": "ResourcingManager",
+          "params": {},
+          "docstring": "RegisteredPaths return registered paths"
+        },
+        "UnregisterPath": {
+          "type": "func",
+          "ident": "UnregisterPath",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "UnregisterPath - register path string"
+        },
+        "UnregisterRootPaths": {
+          "type": "func",
+          "ident": "UnregisterRootPaths",
+          "return": "...string",
+          "struct": "ResourcingManager",
+          "params": {
+            "epntpath": "...string"
+          },
+          "docstring": "UnregisterRootPaths unregister multiple RootPaths and their ResourcingEndPoints"
+        },
+        "UnregisterRootPath": {
+          "type": "func",
+          "ident": "UnregisterRootPath",
+          "return": "bool",
+          "struct": "ResourcingManager",
+          "params": {
+            "epntpath": "string"
+          },
+          "docstring": "UnregisterRootPath unregister RootPath and dispose the ResourcingEndPoint"
+        },
+        "RegisterEndpoints": {
+          "type": "func",
+          "ident": "RegisterEndpoints",
+          "return": "...interface{}",
+          "struct": "ResourcingManager",
+          "params": {
+            "args": "...interface{}"
+          },
+          "docstring": "RegisterEndpoints register multiple Endpoints"
+        },
+        "RegisterEndpoint": {
+          "type": "func",
+          "ident": "RegisterEndpoint",
+          "return": "string,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string",
+            "rootpath": "string",
+            "prms": "...interface{}"
+          },
+          "docstring": "RegisterEndpoint - register ResourcingEndPoint"
+        },
+        "FindRSString": {
+          "type": "func",
+          "ident": "FindRSString",
+          "return": "string,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "FindRSString - find Resource"
+        },
+        "FindRS": {
+          "type": "func",
+          "ident": "FindRS",
+          "return": "io.ReadCloser,",
+          "struct": "ResourcingManager",
+          "params": {
+            "path": "string"
+          },
+          "docstring": "FindRS - find Resource"
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "return": "error",
+          "struct": "ResourcingManager",
+          "params": {},
+          "docstring": "Close *ResouringManager"
+        },
+        "NewResourcingManager": {
+          "type": "func",
+          "ident": "NewResourcingManager",
+          "return": "*ResourcingManager",
+          "params": {},
+          "docstring": "NewResourcingManager - instance"
+        },
+        "GLOBALRSNG": {
+          "type": "func",
+          "ident": "GLOBALRSNG",
+          "return": "*ResourcingManager",
+          "params": {},
+          "docstring": "GLOBALRSNG - GLOBAL Resourcing for app"
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "scheduling": {
+      "package": {
+        "path": "scheduling/schedules.go",
+        "name": "scheduling"
+      },
+      "_": {
+        "SchedulesHandler": {
+          "type": "type",
+          "ident": "SchedulesHandler",
+          "base": "interface",
+          "docstring": "SchedulesHandler - interface",
+          "members": {
+            "NewSchedule(*Schedule,": "ScheduleHandler",
+            "Schedules()": "*Schedules"
+          }
+        },
+        "Schedules": {
+          "type": "func",
+          "ident": "Schedules",
+          "return": "[]*Schedule",
+          "struct": "Schedules",
+          "params": {
+            "schdlids": "...string"
+          },
+          "docstring": "Schedules return []*Schedule of schdlid(s) ..string"
+        },
+        "NewSchedules": {
+          "type": "func",
+          "ident": "NewSchedules",
+          "return": "*Schedules",
+          "params": {
+            "schdlshndlr": "SchedulesHandler"
+          },
+          "docstring": "NewSchedules instance"
+        },
+        "InOutS": {
+          "type": "func",
+          "ident": "InOutS",
+          "return": "string,",
+          "struct": "Schedules",
+          "params": {
+            "in": "interface{}",
+            "ioargs": "...interface{}"
+          },
+          "docstring": "InOutS - OO{ in io.Reader -> out string } loop till no input"
+        },
+        "inMapOut": {
+          "type": "func",
+          "ident": "inMapOut",
+          "return": "bool,",
+          "struct": "Schedules",
+          "params": {
+            "mpin": "map[string]interface{}",
+            "out": "io.Writer",
+            "ioargs": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "inReaderOut": {
+          "type": "func",
+          "ident": "inReaderOut",
+          "return": "bool,",
+          "struct": "Schedules",
+          "params": {
+            "ri": "io.Reader",
+            "out": "io.Writer",
+            "ioargs": "...interface{}"
+          },
+          "docstring": ""
+        },
+        "InOut": {
+          "type": "func",
+          "ident": "InOut",
+          "return": "error",
+          "struct": "Schedules",
+          "params": {
+            "in": "interface{}",
+            "out": "io.Writer",
+            "ioargs": "...interface{}"
+          },
+          "docstring": "InOut - OO{ in io.Reader -> out io.Writer } loop till no input"
+        },
+        "Get": {
+          "type": "func",
+          "ident": "Get",
+          "return": "*Schedule",
+          "struct": "Schedules",
+          "params": {
+            "schdlname": "string"
+          },
+          "docstring": "Get - Scheduler by schdlname"
+        },
+        "RegisterSchedule": {
+          "type": "func",
+          "ident": "RegisterSchedule",
+          "return": "*Schedule",
+          "struct": "Schedules",
+          "params": {
+            "schdlname": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "RegisterSchedule - If schedule  with same name do not exists\n will the schedule be registered"
+        },
+        "ScheduleExists": {
+          "type": "func",
+          "ident": "ScheduleExists",
+          "return": "bool,",
+          "struct": "Schedules",
+          "params": {
+            "scdhkid": "string"
+          },
+          "docstring": "ScheduleExists returns true if *Schedule with schdlid string exists"
+        },
+        "removeSchedule": {
+          "type": "func",
+          "ident": "removeSchedule",
+          "return": "*Schedule",
+          "struct": "Schedules",
+          "params": {
+            "schdl": "*Schedule"
+          },
+          "docstring": ""
+        },
+        "GLOBALSCHEDULES": {
+          "type": "func",
+          "ident": "GLOBALSCHEDULES",
+          "return": "*Schedules",
+          "params": {},
+          "docstring": "GLOBALSCHEDULES - Global *Schedules instance"
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "service": {
+      "package": {
+        "path": "service/service.go",
+        "name": "service"
+      },
+      "_": {
+        "LnkService": {
+          "type": "type",
+          "ident": "LnkService",
+          "base": "struct",
+          "docstring": "LnkService LnkService",
+          "members": {
+            "*serving.Service": "*serving.Service",
+            "brkrfnc": "...string)"
+          }
+        },
+        "NewLnkService": {
+          "type": "func",
+          "ident": "NewLnkService",
+          "return": "*LnkService,",
+          "params": {
+            "name": "string",
+            "displayName": "string",
+            "description": "string",
+            "brokerfunc": "...interface{}"
+          },
+          "docstring": "NewLnkService NewLnkService"
+        },
+        "startLnkService": {
+          "type": "func",
+          "ident": "startLnkService",
+          "return": "...string",
+          "struct": "LnkService",
+          "params": {
+            "args": "...string"
+          },
+          "docstring": ""
+        },
+        "runLnkService": {
+          "type": "func",
+          "ident": "runLnkService",
+          "return": "...string",
+          "struct": "LnkService",
+          "params": {
+            "args": "...string"
+          },
+          "docstring": ""
+        },
+        "stopLnkService": {
+          "type": "func",
+          "ident": "stopLnkService",
+          "return": "...string",
+          "struct": "LnkService",
+          "params": {
+            "args": "...string"
+          },
+          "docstring": ""
+        },
+        "RunService": {
+          "type": "func",
+          "ident": "RunService",
+          "return": "...string",
+          "params": {
+            "args": "...string"
+          },
+          "docstring": "RunService - startup Service pasing args...string"
+        },
+        "RunBroker": {
+          "type": "func",
+          "ident": "RunBroker",
+          "return": "string,",
+          "params": {
+            "exename": "string",
+            "exealias": "string",
+            "args": "...string"
+          },
+          "docstring": "RunBroker - RunBroker command as request in global channel"
+        }
+      }
+    },
+  "serving": {
+      "service": {
+        "package": {
+          "path": "serving/service/version.go",
+          "name": "service"
+        },
+        "_": {
+          "version": {
+            "type": "type",
+            "ident": "version",
+            "base": "[]int",
+            "docstring": " parseVersion will parse any integer ",
+            "members": {
+              "version": "3)",
+              "": "",
+              "for": "{",
+              "vS,": "strconv.Atoi(vStr)",
+              "if": "{",
+              "return": "version",
+              "}": "}",
+              "version[idx]": "vS"
+            }
+          },
+          "versionAtMost": {
+            "type": "func",
+            "ident": "versionAtMost",
+            "return": "error",
+            "params": {
+              "max": "[]int"
+            },
+            "docstring": " versionAtMost will return true if the provided version is less than or equal to max"
+          },
+          "versionCompare": {
+            "type": "func",
+            "ident": "versionCompare",
+            "return": "error",
+            "params": {
+              "v2": "[]int"
+            },
+            "docstring": " versionCompare take to versions split into integer arrays and attempts to compare them\n An error will be returned if there is an array length mismatch.\n Return values are as follows\n -1 - v1 is less than v2\n 0  - v1 is equal to v2\n 1  - v1 is greater than v2"
+          },
+          "parseVersion": {
+            "type": "func",
+            "ident": "parseVersion",
+            "return": "[]int",
+            "params": {
+              "v": "string"
+            },
+            "docstring": " parseVersion will parse any integer type version seperated by periods.\n This does not fully support semver style versions."
+          }
+        }
+      },
+      "package": {
+        "path": "serving/service.go",
+        "name": "serving"
+      },
+      "_": {
+        "Service": {
+          "type": "type",
+          "ident": "Service",
+          "base": "struct",
+          "docstring": "Service struct",
+          "members": {
+            "isService": "bool",
+            "isConsole": "bool",
+            "isBroker": "bool",
+            "start": "...string)",
+            "run": "...string)",
+            "stop": "...string)",
+            "execname": "string",
+            "execfolder": "string",
+            "name": "string",
+            "displayName": "string",
+            "description": "string",
+            "svcConfig": "*service.Config",
+            "args": "[]string"
+          }
+        },
+        "Start": {
+          "type": "func",
+          "ident": "Start",
+          "return": "error",
+          "struct": "Service",
+          "params": {
+            "s": "service.Service"
+          },
+          "docstring": "Start Service"
+        },
+        "exec": {
+          "type": "func",
+          "ident": "exec",
+          "struct": "Service",
+          "params": {},
+          "docstring": ""
+        },
+        "Stop": {
+          "type": "func",
+          "ident": "Stop",
+          "return": "error",
+          "struct": "Service",
+          "params": {
+            "s": "service.Service"
+          },
+          "docstring": "Stop Service"
+        },
+        "IsBroker": {
+          "type": "func",
+          "ident": "IsBroker",
+          "return": "bool",
+          "struct": "Service",
+          "params": {},
+          "docstring": "IsBroker Service"
+        },
+        "IsConsole": {
+          "type": "func",
+          "ident": "IsConsole",
+          "return": "bool",
+          "struct": "Service",
+          "params": {},
+          "docstring": "IsConsole Service"
+        },
+        "IsService": {
+          "type": "func",
+          "ident": "IsService",
+          "return": "bool",
+          "struct": "Service",
+          "params": {},
+          "docstring": "IsService Service"
+        },
+        "ServiceExeName": {
+          "type": "func",
+          "ident": "ServiceExeName",
+          "return": "string",
+          "struct": "Service",
+          "params": {},
+          "docstring": "ServiceExeName Service Executable Name"
+        },
+        "ServiceName": {
+          "type": "func",
+          "ident": "ServiceName",
+          "return": "string",
+          "struct": "Service",
+          "params": {},
+          "docstring": "ServiceName Service Name"
+        },
+        "ServiceExeFolder": {
+          "type": "func",
+          "ident": "ServiceExeFolder",
+          "return": "string",
+          "struct": "Service",
+          "params": {},
+          "docstring": "ServiceExeFolder local folder where Service Executable resides"
+        },
+        "ServiceDisplayName": {
+          "type": "func",
+          "ident": "ServiceDisplayName",
+          "return": "string",
+          "struct": "Service",
+          "params": {},
+          "docstring": "ServiceDisplayName Service Display Name"
+        },
+        "ServiceDescription": {
+          "type": "func",
+          "ident": "ServiceDescription",
+          "return": "string",
+          "struct": "Service",
+          "params": {},
+          "docstring": "ServiceDescription Service Description"
+        },
+        "NewService": {
+          "type": "func",
+          "ident": "NewService",
+          "return": "*Service,",
+          "params": {
+            "name": "string",
+            "displayName": "string",
+            "description": "string",
+            "start": "func"
+          },
+          "docstring": "NewService invoke new *Service\nname - ServiceName\ndisplayName - ServiceDisplayName\ndescription - ServiceDescription\nstart - func(*Service, ...string) implementation, gets invoked when Service Start\nrun - func(*Service, ...string) implementation, gets invoked when Service Run\nstop - func(*Service, ...string) implementation, gets invoked when Service Stop"
+        },
+        "of golang app,\n//args - args from os gets passed into here\nfunc": {
+          "type": "func",
+          "ident": "of golang app,\n//args - args from os gets passed into here\nfunc",
+          "return": "error",
+          "params": {
+            "svr": "*Service"
+          },
+          "docstring": "Execute main Service Execute method when executing Service\ncalled in main() "
+        },
+        "executableClean": {
+          "type": "func",
+          "ident": "executableClean",
+          "return": "error",
+          "params": {},
+          "docstring": ""
+        },
+        "executable": {
+          "type": "func",
+          "ident": "executable",
+          "return": "error",
+          "params": {},
+          "docstring": ""
+        },
+        "Executable": {
+          "type": "func",
+          "ident": "Executable",
+          "return": "error",
+          "params": {},
+          "docstring": " Executable returns an absolute path that can be used to\n re-invoke the current program.\n It may not be valid after the current program exits."
+        },
+        "ExecutableFolder": {
+          "type": "func",
+          "ident": "ExecutableFolder",
+          "return": "error",
+          "params": {},
+          "docstring": " ExecutableFolder returns same path as Executable, returns just the folder\n path. Excludes the executable name and any trailing slash."
+        }
+      }
+    },
+  "sourcemap": {
+      "package": {
+        "path": "sourcemap/mappings.go",
+        "name": "sourcemap"
+      },
+      "_": {
+        "fn": {
+          "type": "type",
+          "ident": "fn",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "genLine": "int32",
+            "genColumn": "int32",
+            "sourcesInd": "int32",
+            "sourceLine": "int32",
+            "sourceColumn": "int32",
+            "namesInd": "int32"
+          }
+        },
+        "mappings": {
+          "type": "type",
+          "ident": "mappings",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "rd": "*strings.Reader",
+            "dec": "base64vlq.Decoder",
+            "": "",
+            "hasName": "bool",
+            "value": "mapping",
+            "values": "[]mapping"
+          }
+        },
+        "parseMappings": {
+          "type": "func",
+          "ident": "parseMappings",
+          "return": "error",
+          "params": {
+            "s": "string"
+          },
+          "docstring": ""
+        },
+        "mappingsNumber": {
+          "type": "func",
+          "ident": "mappingsNumber",
+          "return": "int",
+          "params": {
+            "s": "string"
+          },
+          "docstring": ""
+        },
+        "parse": {
+          "type": "func",
+          "ident": "parse",
+          "return": "error",
+          "struct": "mappings",
+          "params": {},
+          "docstring": ""
+        },
+        "parseGenCol": {
+          "type": "func",
+          "ident": "parseGenCol",
+          "return": "error",
+          "params": {
+            "m": "*mappings"
+          },
+          "docstring": ""
+        },
+        "parseSourcesInd": {
+          "type": "func",
+          "ident": "parseSourcesInd",
+          "return": "error",
+          "params": {
+            "m": "*mappings"
+          },
+          "docstring": ""
+        },
+        "parseSourceLine": {
+          "type": "func",
+          "ident": "parseSourceLine",
+          "return": "error",
+          "params": {
+            "m": "*mappings"
+          },
+          "docstring": ""
+        },
+        "parseSourceCol": {
+          "type": "func",
+          "ident": "parseSourceCol",
+          "return": "error",
+          "params": {
+            "m": "*mappings"
+          },
+          "docstring": ""
+        },
+        "parseNamesInd": {
+          "type": "func",
+          "ident": "parseNamesInd",
+          "return": "error",
+          "params": {
+            "m": "*mappings"
+          },
+          "docstring": ""
+        },
+        "pushValue": {
+          "type": "func",
+          "ident": "pushValue",
+          "struct": "mappings",
+          "params": {},
+          "docstring": ""
+        }
+      },
+      "internal": {
+        "base64vlq": {
+          "package": {
+            "path": "sourcemap/internal/base64vlq/base64vlq_test.go",
+            "name": "base64vlq_test"
+          },
+          "_": {
+            "TestEncodeDecode": {
+              "type": "func",
+              "ident": "TestEncodeDecode",
+              "return": "*testing.T",
+              "params": {
+                "t": "*testing.T"
+              },
+              "docstring": ""
+            },
+            "BenchmarkEncode": {
+              "type": "func",
+              "ident": "BenchmarkEncode",
+              "return": "*testing.B",
+              "params": {
+                "b": "*testing.B"
+              },
+              "docstring": ""
+            },
+            "BenchmarkEncodeDecode": {
+              "type": "func",
+              "ident": "BenchmarkEncodeDecode",
+              "return": "*testing.B",
+              "params": {
+                "b": "*testing.B"
+              },
+              "docstring": ""
+            }
+          }
+        }
+      }
+    },
+  "ssh": {
+      "package": {
+        "path": "ssh/sshclient.go",
+        "name": "ssh"
+      },
+      "_": {
+        "SSHConnection": {
+          "type": "type",
+          "ident": "SSHConnection",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "host": "string",
+            "user": "string",
+            "password": "string",
+            "sshclnts": "map[*sshclient]*sshclient"
+          }
+        },
+        "sshclient": {
+          "type": "type",
+          "ident": "sshclient",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "sshcn": "*SSHConnection",
+            "sshclnt": "*ssh.Client"
+          }
+        },
+        "NewSSHConnection": {
+          "type": "func",
+          "ident": "NewSSHConnection",
+          "return": "*SSHConnection",
+          "params": {
+            "host": "string",
+            "username": "string",
+            "password": "string"
+          },
+          "docstring": ""
+        },
+        "Connect": {
+          "type": "func",
+          "ident": "Connect",
+          "return": "*sshclient,",
+          "struct": "SSHConnection",
+          "params": {},
+          "docstring": ""
+        },
+        "newSSHClient": {
+          "type": "func",
+          "ident": "newSSHClient",
+          "return": "error",
+          "params": {
+            "sshcn": "*SSHConnection"
+          },
+          "docstring": ""
+        },
+        "SSHAgent": {
+          "type": "func",
+          "ident": "SSHAgent",
+          "return": "ssh.AuthMethod",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "web": {
+      "package": {
+        "path": "web/web.go",
+        "name": "web"
+      },
+      "_": {
+        "ClientHandle": {
+          "type": "type",
+          "ident": "ClientHandle",
+          "base": "struct",
+          "docstring": "",
+          "members": {
+            "*Client": "*Client",
+            "SendReceive": "error)",
+            "SendRespondString": "error)",
+            "Send": "error)",
+            "Close": "func()"
+          }
+        },
+        "Client": {
+          "type": "type",
+          "ident": "Client",
+          "base": "struct",
+          "docstring": "Client - struct",
+          "members": {
+            "httpclient": "*http.Client"
+          }
+        },
+        "ReaderWriter": {
+          "type": "type",
+          "ident": "ReaderWriter",
+          "base": "interface",
+          "docstring": "ReaderWriter interface",
+          "members": {
+            "iorw.PrinterReader": "iorw.PrinterReader",
+            "io.ReadWriteCloser": "io.ReadWriteCloser",
+            "Flush()": "error"
+          }
+        },
+        "NewClient": {
+          "type": "func",
+          "ident": "NewClient",
+          "return": "*Client",
+          "params": {},
+          "docstring": "NewClient - instance"
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "struct": "Client",
+          "params": {},
+          "docstring": "Close *Client"
+        },
+        "SendReceive": {
+          "type": "func",
+          "ident": "SendReceive",
+          "return": "ReaderWriter,",
+          "struct": "Client",
+          "params": {
+            "rqstpath": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "SendReceive return ReaderWriter that implement io.Reader,io.Writer"
+        },
+        "SendRespondString": {
+          "type": "func",
+          "ident": "SendRespondString",
+          "return": "string,",
+          "struct": "Client",
+          "params": {
+            "rqstpath": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "SendRespondString - Client Send but return response as string"
+        },
+        "Send": {
+          "type": "func",
+          "ident": "Send",
+          "return": "iorw.Reader,",
+          "struct": "Client",
+          "params": {
+            "rqstpath": "string",
+            "a": "...interface{}"
+          },
+          "docstring": "Send - Client send"
+        },
+        "Do": {
+          "type": "func",
+          "ident": "Do",
+          "return": "*http.Response,",
+          "struct": "Client",
+          "params": {
+            "rqst": "*http.Request"
+          },
+          "docstring": "Do - refer tp http.Client Do interface"
+        },
+        "init": {
+          "type": "func",
+          "ident": "init",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "webactions": {
+      "package": {
+        "path": "webactions/webactions.go",
+        "name": "webactions"
+      },
+      "_": {
+        "WebactionsJS": {
+          "type": "func",
+          "ident": "WebactionsJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": ""
+        },
+        "JqueryJS": {
+          "type": "func",
+          "ident": "JqueryJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": ""
+        },
+        "ParsingJS": {
+          "type": "func",
+          "ident": "ParsingJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": ""
+        },
+        "WebactionsBundleJS": {
+          "type": "func",
+          "ident": "WebactionsBundleJS",
+          "return": "io.Reader",
+          "params": {},
+          "docstring": ""
+        }
+      }
+    },
+  "ws": {
+      "package": {
+        "path": "ws/wsio.go",
+        "name": "ws"
+      },
+      "_": {
+        "ReaderWriter": {
+          "type": "type",
+          "ident": "ReaderWriter",
+          "base": "struct",
+          "docstring": "ReaderWriter - struct",
+          "members": {
+            "ws": "*websocket.Conn",
+            "r": "io.Reader",
+            "rbuf": "*bufio.Reader",
+            "rerr": "error",
+            "w": "io.WriteCloser",
+            "wbuf": "*bufio.Writer",
+            "werr": "error",
+            "isText": "bool",
+            "isBinary": "bool"
+          }
+        },
+        "NewServerReaderWriter": {
+          "type": "func",
+          "ident": "NewServerReaderWriter",
+          "return": "*ReaderWriter,",
+          "params": {
+            "w": "http.ResponseWriter",
+            "r": "*http.Request"
+          },
+          "docstring": "NewServerReaderWriter - instance"
+        },
+        "NewClientReaderWriter": {
+          "type": "func",
+          "ident": "NewClientReaderWriter",
+          "return": "*ReaderWriter,",
+          "params": {
+            "rqstpath": "string",
+            "headers": "http.Header"
+          },
+          "docstring": ""
+        },
+        "ReadRune": {
+          "type": "func",
+          "ident": "ReadRune",
+          "return": "rune,",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "ReadRune - refer to io.RuneReader"
+        },
+        "WriteRune": {
+          "type": "func",
+          "ident": "WriteRune",
+          "return": "int,",
+          "struct": "ReaderWriter",
+          "params": {
+            "r": "rune"
+          },
+          "docstring": "WriteRune - refer to bufio.Writer - WriteRune"
+        },
+        "CanRead": {
+          "type": "func",
+          "ident": "CanRead",
+          "return": "bool",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "CanRead - can Read"
+        },
+        "CanWrite": {
+          "type": "func",
+          "ident": "CanWrite",
+          "return": "bool",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "CanWrite - can Write"
+        },
+        "Read": {
+          "type": "func",
+          "ident": "Read",
+          "return": "int,",
+          "struct": "ReaderWriter",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": "Read - refer io.Reader"
+        },
+        "Readln": {
+          "type": "func",
+          "ident": "Readln",
+          "return": "string,",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "Readln - read single line"
+        },
+        "Readlines": {
+          "type": "func",
+          "ident": "Readlines",
+          "return": "[]string,",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "Readlines - return lines []string slice"
+        },
+        "ReadAll": {
+          "type": "func",
+          "ident": "ReadAll",
+          "return": "string,",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "ReadAll - return all read content as string"
+        },
+        "socketIOType": {
+          "type": "func",
+          "ident": "socketIOType",
+          "return": "int",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": ""
+        },
+        "Flush": {
+          "type": "func",
+          "ident": "Flush",
+          "return": "error",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "Flush - flush invoke done onmessage"
+        },
+        "Print": {
+          "type": "func",
+          "ident": "Print",
+          "return": "...interface{}",
+          "struct": "ReaderWriter",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "Print - refer to fmt.Fprint"
+        },
+        "Println": {
+          "type": "func",
+          "ident": "Println",
+          "return": "...interface{}",
+          "struct": "ReaderWriter",
+          "params": {
+            "a": "...interface{}"
+          },
+          "docstring": "Println - refer to fmt.Fprintln"
+        },
+        "Write": {
+          "type": "func",
+          "ident": "Write",
+          "return": "int,",
+          "struct": "ReaderWriter",
+          "params": {
+            "p": "[]byte"
+          },
+          "docstring": "Write - refer io.Writer"
+        },
+        "Close": {
+          "type": "func",
+          "ident": "Close",
+          "return": "error",
+          "struct": "ReaderWriter",
+          "params": {},
+          "docstring": "Close - refer io.Closer"
+        }
+      }
+    },
+  "meta": {
+      "dur": "47.115 seconds"
+    }
+}
