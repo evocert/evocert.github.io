@@ -14,7 +14,6 @@ define(["module","./parsedoc"],function(module,parsedoc){
 				var path=e.AbsolutePath();
 				parsedoc({src:src,path:path.substring(root.length+1),root:obj});
 			}.bind(this));
-			//request.ResponseHeader().Set("Content-Type","application/json");
 			var t1=new Date();
 			obj.meta={};
 			obj.meta.dur=(t1-t0)/1000+" seconds";
@@ -23,7 +22,7 @@ define(["module","./parsedoc"],function(module,parsedoc){
 		},
 		ls:function(r){
 			var base="./www"
-			var root=base+"/docgen/kwe";
+			var root=base+"/doc/kwe";
 			while(root[root.length-1]=="/"&&root.length>0)root.pop();
 			var ret=[];
 			_fsutils.FIND(root).filter(function(e){

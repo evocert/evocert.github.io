@@ -1,6 +1,8 @@
 require({
 	paths:{
-		"jquery":"./js/jquery"
+		"jquery":"./js/jquery",
+		"text":"./js/require.text",
+		"frag":"./frag",
 	},
 	shim:{
 		"jquery":{
@@ -23,10 +25,12 @@ require({
 	$=_$.noConflict();
 	window.buildClient=function(){
 		var obj={};
-		//https://stackoverflow.com/questions/24705401/jquery-ajax-with-array-of-urls
-		//$.get("./api/?cmd=ls",function(files){
 		var base="https://raw.githubusercontent.com/evocert/kwe/main/";
-		$.getJSON(base+"gendocs/codelist.json",function(files){
+		var filelist="gendocs/codelist.json";
+		//var base="";
+		//var filelist="./api/?cmd=ls";
+		//https://stackoverflow.com/questions/24705401/jquery-ajax-with-array-of-urls
+		$.getJSON(base+filelist,function(files){
 			$.when.apply($,files.map(function(url){return $.ajax(base+url);})).done(function(){
 				var results=[];
 				for(var i=0;i<arguments.length;i++){
