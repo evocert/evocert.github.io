@@ -30,9 +30,11 @@ require({
 	$(document.body).html(frag_doc)
 	window.buildClient=function(){
 		var obj={};
+		//--raw
 		var base=r.tojson().parameters.base?r.tojson().parameters.base:"https://raw.githubusercontent.com/evocert/kwe/main/";
 		var path=r.tojson().parameters.path?r.tojson().parameters.path:"./www/kwe_src";
 		var filelist="https://raw.githubusercontent.com/evocert/kwe/main/gendocs/codelist.json";
+		//--
 		/*
 		//--local
 		var base=r.tojson().parameters.base?r.tojson().parameters.base:[window.location.origin,"/"].join("");

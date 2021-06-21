@@ -1,83 +1,120 @@
-[[if(options.parent){]]
-<a href="#" id=".." class="back">--back--</a></br>
-[[}else{]]
-<a href="#">--root--</a></br>
-[[}]]
-<h3>Details</h3>
-[[try{
-var colwidth=0;
-Object.keys(options.data).forEach(function(k){
-	colwidth=colwidth<k.length?k.length:colwidth;
-}.bind(this));
-colwidth+=2;
-Object.keys(options.data).forEach(function(_k){
-	this.k=_k;
-]]
-	<div>
-		<span class="muted">--</span>
-		<span class="k">{{this.k}}</span>
-		<span class="muted">[[print("-".repeat(colwidth-_k.length));]]</span>
-		[[
-		if(typeof(options.data[_k])=="string"){
-			]]<span class="[[print(_k);]] [[print(options.data[_k]);]]">[[print(options.data[_k]);]]<span>[[
-		}else{]]
-		[[
-			var colwidth2=0;
-			Object.keys(options.data[_k]).forEach(function(k){
-				colwidth2=colwidth2<k.length?k.length:colwidth2;
-			}.bind(this));
-			colwidth2+=2;
-		]]
+[['use strict';]]
+[[try{]]
+<aside class="doc__nav">
+	<ul class="">
+	[[if(options.parent){]]
+		<li class="js-btn left"><a href="#" id="..">Back</a></li>
+	[[}else{]]
+		<li class="js-btn "><a href="#">Home</a></li>
+	[[}]]
+	</ul>
+</aside>
+<article class="doc__content">
+	<h3>Details</h3>
+	[[try{
+	var colwidth=0;
+	Object.keys(options.data).forEach(function(k){
+		colwidth=colwidth<k.length?k.length:colwidth;
+	}.bind(this));
+	colwidth+=2;
+	Object.keys(options.data).forEach(function(_k){
+		this.k=_k;
+	]]
+		<div>
+			<span class="muted">--</span>
+			<span class="k">{{this.k}}</span>
+			<span class="muted">[[print("-".repeat(colwidth-_k.length));]]</span>
+			[[
+			if(typeof(options.data[_k])=="string"){
+				]]<span class="[[print(_k);]] [[print(options.data[_k]);]]">[[print(options.data[_k]);]]<span>[[
+			}else{]]
+			[[
+				var colwidth2=0;
+				Object.keys(options.data[_k]).forEach(function(k){
+					colwidth2=colwidth2<k.length?k.length:colwidth2;
+				}.bind(this));
+				colwidth2+=2;
+			]]
 
-			[[Object.keys(options.data[_k]).forEach(function(_k0){
-				]]<div>
-					<span class="muted">--</span> <span class="muted">--</span>
-					[[print(_k0);]]
-					<span class="muted">[[print("-".repeat(colwidth2-_k0.length));]]</span>
-				[[
-				if(typeof(options.data[_k][_k0])=="string"){
+				[[Object.keys(options.data[_k]).forEach(function(_k0){
+					]]<div>
+						<span class="muted">--</span> <span class="muted">--</span>
+						[[print(_k0);]]
+						<span class="muted">[[print("-".repeat(colwidth2-_k0.length));]]</span>
+					[[
+					if(typeof(options.data[_k][_k0])=="string"){
 
-					]]<span class="[[print(_k);]]">[[print(options.data[_k][_k0]);]]<span>[[
-				}else{]]
-					[[Object.keys(options.data[_k][_k0]).forEach(function(_k1){
-						]]<div>
-							<span class="muted">--</span><span class="muted">--</span>
-							[[print(_k0);]]
-							<span class="muted">--</span>
-						</div>
-					[[}.bind(this));]]
-				[[}]]
-				</div>
-			[[}.bind(this));]]
-		[[}]]
-	</div>
-[[}.bind(this));]]
+						]]<span class="[[print(_k);]]">[[print(options.data[_k][_k0]);]]<span>[[
+					}else{]]
+						[[Object.keys(options.data[_k][_k0]).forEach(function(_k1){
+							]]<div>
+								<span class="muted">--</span><span class="muted">--</span>
+								[[print(_k0);]]
+								<span class="muted">--</span>
+							</div>
+						[[}.bind(this));]]
+					[[}]]
+					</div>
+				[[}.bind(this));]]
+			[[}]]
+		</div>
+	[[}.bind(this));]]
+	[[}catch(e){}]]
+	<style>
+		.muted{
+			color:#888888;
+		}
+		.k{
+			color:#CCCCCC;
+		}
+		.docstring{
+			color:#CC8888;
+		}
+		.base{
+			color:#CC88CC;
+		}
+		.ident{
+			color:#FFCC44;
+		}
+		.members,
+		.params{
+			color:#8888CC;
+		}
+		.type.type{
+			color:#FF8888;
+		}
+		.type.func{
+			color:#88FF88;
+		}
+
+.doc__nav .left {
+    color: var(--accent-color);
+    position: relative;
+}
+.doc__nav .left::after {
+/*
+    position: absolute;
+    content: "";
+    width: 2rem;
+    height: 1rem;
+    background-color:red;
+    left: -1.5rem;
+    top: 0.3rem;
+*/
+    position: absolute;
+    content: "";
+    left: -1.5rem;
+  width: 0!important;; 
+  height: 0!important;; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:15px solid #fe6a6b; 
+
+}
+.doc__nav ul.fixed {
+    position:unset!important;
+    top:unset!important;
+}
+
+	</style>
 [[}catch(e){}]]
-<style>
-	.muted{
-		color:#888888;
-	}
-	.k{
-		color:#CCCCCC;
-	}
-	.docstring{
-		color:#CC8888;
-	}
-	.base{
-		color:#CC88CC;
-	}
-	.ident{
-		color:#FFCC44;
-	}
-	.members,
-	.params{
-		color:#8888CC;
-	}
-	.type.type{
-		color:#FF8888;
-	}
-	.type.func{
-		color:#88FF88;
-	}
-</style>
-
