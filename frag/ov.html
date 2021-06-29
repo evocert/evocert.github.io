@@ -1,5 +1,118 @@
 [['use strict';]]
 [[try{]]
+[[function printFunction(g,k,obj){
+	]]<section>[[
+		]]<h3 class="section__title">[[print(k);]]</h3>[[
+		//comments
+		if(obj[legend.comments].length==0){
+			]]<p>No documentation</p>[[
+		}else{
+			]]<p>[[print(obj[legend.comments].join("\n"));]]</p>[[
+		}
+	]]</section>[[
+	]]<table>
+		<colgroup>
+			<col style="width:20%;"></col>
+			<col style="width:80%;"></col>
+		</colgroup>
+		<tbody>
+			<tr><td>ident:</td><td>[[print(k);]]</td></tr>
+			<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
+			<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
+			<tr><td>parameters:</td><td>
+				[[if(obj[legend.parameters].length==0){
+					print("none");
+				}else{
+					]]<table>
+						<colgroup>
+							<col style="width:30%;"></col>
+							<col style="width:70%;"></col>
+						</colgroup>
+						<tbody>[[
+					obj[legend.parameters].forEach(function(k){
+						Object.keys(k).forEach(function(k2){
+							]]<tr>[[
+							]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
+							]]</tr>[[
+						}.bind(this));
+					});
+						]]<tbody>
+					</table>[[
+				}]]
+			</td></tr>
+			<tr><td>returns:</td><td>
+				[[if(obj[legend.returns].length==0){
+					print("none");
+				}else{
+					]]<table>
+						<colgroup>
+							<col style="width:30%;"></col>
+							<col style="width:70%;"></col>
+						</colgroup>
+						<tbody>[[
+					obj[legend.returns].forEach(function(k){
+						Object.keys(k).forEach(function(k2){
+							]]<tr>[[
+							]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
+							]]</tr>[[
+						});
+					}.bind(this));
+						]]</tbody>
+					</table>[[
+				}]]
+			</td></tr>
+		</tbody>
+	</table>[[
+};]]
+[[function printStruct(g,k,obj){
+	]]<section>[[
+		]]<h3 class="section__title">[[print(k);]]</h3>[[
+		//comments
+		if(obj[legend.comments].length==0){
+			]]<p>No documentation</p>[[
+		}else{
+			]]<p>[[print(obj[legend.comments].join("\n"));]]</p>[[
+		}
+	]]</section>[[
+	]]<table>
+		<colgroup>
+			<col style="width:20%;"></col>
+			<col style="width:80%;"></col>
+		</colgroup>
+		<tbody>
+			<tr><td>ident:</td><td>[[print(k);]]</td></tr>
+			<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
+			<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
+			<tr><td>fields:</td><td>
+				<table>
+					<colgroup>
+						<col style="width:30%;"></col>
+						<col style="width:70%;"></col>
+					</colgroup>
+					<tbody>[[
+					if(obj[legend.fields][legend.scope_global]){
+						Object.keys(obj[legend.fields][legend.scope_global]).forEach(function(k){
+							]]<tr>[[
+							]]	<td>public</td><td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_global][k]);]]</td>[[
+							]]</tr>[[
+						});
+					}else{
+					}
+					if(obj[legend.fields][legend.scope_private]){
+						Object.keys(obj[legend.fields][legend.scope_private]).forEach(function(k){
+							]]<tr>[[
+							]]	<td>private</td><td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_private][k]);]]</td>[[
+							]]</tr>[[
+						});
+					}else{
+					}
+					]]<tbody>
+				</table>
+			</td></tr>
+		</tbody>
+	</table>
+[[};]]
+
 <aside class="doc__nav">
 	<ul class="">
 	[[if(options.parent){]]
@@ -7,9 +120,8 @@
 	[[}else{]]
 		<li class="js-btn"><a href="#" class="back">Home</a></li>
 	[[}]]
-
 		[[Object.keys(options.data).forEach(function(_k){
-			if(_k=="_")return;
+			if(_k.startsWith("/"))return;
 			if(_k=="package")return;
 			this.k=_k;
 		]]
@@ -18,190 +130,102 @@
 
 	</ul>
 </aside>
+
+
+
+
 <article class="doc__content">
-
-		[[if(!options.isdetailedview){]]
 	<section>
-			[[if(options.data.package){]]
 		<h3 class="section__title">Package</h3>
-		<p>name: {{options.data.package.name}}</p>
-		<p>path: {{options.data.package.path}}</p>
-			[[}]]
-	</section>
-	<section>
-	</section>
-	<section>
-		<h3 class="section__title">Details</h3>
-			[[if(options.data._){]]
-			[[Object.keys(options.data._).forEach(function(_k){
-				this.k=_k;
-			]]
-		<section>
-			<h3 class="section__title"><a data-template="frag/detail.html" href="#" id="_.{{this.k}}">{{this.k}}</a></h3>
-					[[if(options.data._[_k].docstring){]]
-						<p>[[print(options.data._[_k].docstring);]]</p>
-					[[}else{]]
-						<p>No documentation</p>
-					[[}]]
-					<table>
-						<colgroup>
-							<col style="width: 20%;">
-							<col style="width: 80%;">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>ident:</td>
-								<td style="background:#FFEC88;color:#888844;">[[print(options.data._[_k].ident);]]</td>
-							</tr>
-							<tr>
-								<td>type:</td>
-								<td
-									[[switch(options.data._[_k].type){
-										case"func":
-											]]style="background:#88FF88;color:#448844;"[[
-											break;
-										case"type":
-											]]style="background:#8888FF;color:#444488;"[[
-											break;
-										default:
-											break;
-									}]]
-								>
-									[[print(options.data._[_k].type);]]
-							</tr>
-							[[switch(options.data._[_k].type){
-								case"func":
-								]]
-									[[if(options.data._[_k].params){]]
-									<tr>
-										<td>
-											parameters:
-										</td>
-										<td style="padding:0px;">
-											<table>
-												<colgroup>
-													<col style="width: 50%;">
-													<col style="width: 50%;">
-												</colgroup>
-												<tbody>
-													[[Object.keys(options.data._[_k].params).forEach(function(mk){]]
-													<tr>
-														<td>[[print(mk);]]</td>
-														<td class="type [[print(options.data._[_k].params[mk]);]]">[[print(options.data._[_k].params[mk]);]]</td>
-													</tr>
-													[[});]]
-												</tbody>
-											</table
-										</td>
-									</tr>
-									[[}]]
-								[[
-									break;
-								case"type":
-								]]
-									[[if(options.data._[_k].members){]]
-									<tr>
-										<td>
-											members:
-										</td>
-										<td style="padding:0px;">
-											<table>
-												<colgroup>
-													<col style="width: 50%;">
-													<col style="width: 50%;">
-												</colgroup>
-												<tbody>
-													[[Object.keys(options.data._[_k].members).forEach(function(mk){]]
-													<tr>
-														<td>[[print(mk);]]</td>
-														<td class="type [[print(options.data._[_k].members[mk]);]]">[[print(options.data._[_k].members[mk]);]]</td>
-													</tr>
-													[[});]]
-												</tbody>
-											</table>
-										</td>
-									</tr>
-									[[}]]
-								[[
-									break;
-								default:
-									break;
-							}]]
+		[[
+			if(options.data[legend.package_contents]){
+				if(options.data[legend.package_contents][legend.scope_local]){
+					Object.keys(options.data[legend.package_contents][legend.scope_local]).filter(function(k){
+						return options.data[legend.package_contents][legend.scope_local][k].type=="func";
+					}).forEach(function(k){
+						console.log(k);
+						printFunction(false,k,options.data[legend.package_contents][legend.scope_local][k]);
+					});
+					Object.keys(options.data[legend.package_contents][legend.scope_local]).filter(function(k){
+						return options.data[legend.package_contents][legend.scope_local][k].type=="type"
+						|| options.data[legend.package_contents][legend.scope_local][k].type=="interface";
+					}).forEach(function(k){
+						console.log(k);
+						printStruct(false,k,options.data[legend.package_contents][legend.scope_local][k]);
+					});
+				}
+				if(options.data[legend.package_contents][legend.scope_global]){
+					Object.keys(options.data[legend.package_contents][legend.scope_global]).filter(function(k){
+						return options.data[legend.package_contents][legend.scope_global][k].type=="func";
+					}).forEach(function(k){
+						printFunction(true,k,options.data[legend.package_contents][legend.scope_global][k]);
+					});
+					Object.keys(options.data[legend.package_contents][legend.scope_global]).filter(function(k){
+						return options.data[legend.package_contents][legend.scope_global][k].type=="type"
+						|| options.data[legend.package_contents][legend.scope_global][k].type=="interface";
+					}).forEach(function(k){
+						printStruct(true,k,options.data[legend.package_contents][legend.scope_global][k]);
+					});
 
-						</tbody>
-
-					</table>
-				[[}.bind(this));]]
-		</section>
-			[[}]]
-		[[}]]
+				}
+			};
+		]]
 	</section>
-	[[}catch(e){
-		print("--"+e.toString()+"--");
-	}]]
 </article>
+[[}catch(e){print(e.toString());};]]
 <style>
 	.muted{
 		color:#888888;
 	}
-.arrow-left {
-  display: block;
-  width: 0!important;; 
-  height: 0!important;; 
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right:10px solid #fe6a6b; 
-}
-.doc__nav .left {
-    color: var(--accent-color);
-    position: relative;
-}
-.doc__nav .left::after {
+	.arrow-left {
+		display: block;
+		width: 0!important;; 
+		height: 0!important;; 
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right:10px solid #fe6a6b; 
+	}
+	.doc__nav .left {
+		color: var(--accent-color);
+		position: relative;
+	}
+	.doc__nav .left::after {
+		position: absolute;
+		content: "";
+		left: -1.5rem;
+		width: 0!important;; 
+		height: 0!important;; 
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right:15px solid #fe6a6b; 
+
+	}
+	.doc__nav ul.fixed {
+			position:unset!important;
+			top:unset!important;
+	}
+	a.selected{
+		color:#FFFFFF;
+		background:var(--accent-color);
+		font-weight:bold;
+	}
 /*
-    position: absolute;
-    content: "";
-    width: 2rem;
-    height: 1rem;
-    background-color:red;
-    left: -1.5rem;
-    top: 0.3rem;
-*/
-    position: absolute;
-    content: "";
-    left: -1.5rem;
-  width: 0!important;; 
-  height: 0!important;; 
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right:15px solid #fe6a6b; 
-
-}
-.doc__nav ul.fixed {
-    position:unset!important;
-    top:unset!important;
-}
-a.selected{
-  color:#FFFFFF;
-  background:var(--accent-color);
-  font-weight:bold;
-}
-table td, table th {
-    border: 1px solid var(--code-bg-color);
-    padding: 4px;
-    font-weight: 300;
-vertical-align:top;
-}
-table td {
-    background-color: #CCC;
-    color: #888888;
-    font-weight: 600;
-}
-table td:first-child {
-    background-color: #CCC;
-    color: #888888;
-    font-weight: 600;
-}
-
+	table td, table th {
+		border: 1px solid var(--code-bg-color);
+		padding: 4px;
+		font-weight: 300;
+		vertical-align:top;
+	}
+	table td {
+		background-color: #CCC;
+		color: #888888;
+		font-weight: 600;
+	}
+	table td:first-child {
+		background-color: #CCC;
+		color: #888888;
+		font-weight: 600;
+	}
 	.type.func{
 		background:#8888FF;
 	}
@@ -220,6 +244,6 @@ table td:first-child {
 	.type.string{
 		background:#88FF88;
 	}
-
+*/
 </style>
 

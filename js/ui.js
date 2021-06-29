@@ -13,8 +13,24 @@ define([
 	var render=function(options){
 		options=typeof(options)=="object"?options:{};
 		if(options.target==undefined)throw("ETGT");
-		if(options.data==undefined)throw("EDATA");
+		if(options.root==undefined)throw("EDATA");
+		options.data=typeof(options.data)=="undefined"?options.root:options.data;
 		if(options.template==undefined)options.template=frag_ov
+		var legendUnparsed=options.root["/legent"];
+		var legend={
+			package_contents:"/",//todo:read or default
+			scope_global:legendUnparsed["/scope-global"],//todo:read or default
+			scope_local:legendUnparsed["/scope-local"],//todo:read or default
+			inherits:legendUnparsed["/inherits"],//todo:read or default
+			returns:legendUnparsed["/returns"],//todo:read or default
+			parameters:"parameters",//todo:read or default
+			type:"type",//todo:read or default
+			owner:"owner",//todo:read or default
+			comments:legendUnparsed["/comments"],//todo:read or default
+			fields:legendUnparsed["/fields"],//todo:read or default
+			methods:legendUnparsed["/methods"],//todo:read or default
+			package_paths:legendUnparsed["/package-paths"]//todo:read or default
+		};
 		$(options.target).text(typeof(parsedoc));
 			var src="";
 			parsing(
@@ -22,21 +38,17 @@ define([
 					beglbl:"[[",
 					endlbl:"]]",
 					data:options.data,
-					//trimactive:false,
-					//flushpassive:function(val,idx){},
-					//flushactive:function(val,idx){//tmpcode+=val;},
+					//legend:legend,
 					print:function(val){},
 					evalactive:function(script,content){
-						//console.log(script);
 						var ctx={};
 						print=function(val){
-							//src+=val;
 							parsing(
 								{
 									beglbl:"{{",
 									endlbl:"}}",
 									data:options.data,
-									//trimactive:false,
+									legend:legend,
 									flushpassive:function(val,idx){
 										src+=val;
 									},
@@ -59,14 +71,30 @@ define([
 				if(!template){
 					if(id==""||id==null)return;
 					if(id==".."){
-						render(options.parent);
+						console.log("A");
+						render(
+							options.parent
+						);
 						return;
 					}
 					if(id.startsWith("_.")){
+						console.log("B");
 						id=id.substring(2);
-						render({parent:options,target:options.target,isdetailedview:true,data:options.data._[id]});
+						render({
+							parent:options,
+							target:options.target,
+							isdetailedview:true,
+							root:options.root,
+							data:options.data._[id]
+						});
 					}else{
-						render({parent:options,target:options.target,data:options.data[id]});
+						console.log("C");
+						render({
+							parent:options,
+							target:options.target,
+							root:options.root,
+							data:options.data[id]
+						});
 					}
 				}else{
 					require(["text!"+template],function(template){
@@ -75,17 +103,32 @@ define([
 						}
 						if(id==""||id==null)return;
 						if(id==".."){
-							render(options.parent);
+							console.log("D");
+							render(
+								options.parent
+							);
 							return;
 						}
 						if(id.startsWith("_.")){
+							console.log("E");
 							id=id.substring(2);
-							render({parent:options,target:options.target,isdetailedview:true,data:options.data._[id],template:template});
+							render({
+								parent:options,
+								target:options.target,
+								isdetailedview:true,
+								data:options.root._[id],
+								template:template
+							});
 						}else{
-							render({parent:options,target:options.target,data:options.data[id],template:template});
+							console.log("F");
+							render({
+								parent:options,
+								target:options.target,
+								data:options.root[id],
+								template:template
+							});
 						}
-						});
-
+					});
 				}
 			});
 	};

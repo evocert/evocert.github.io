@@ -35,7 +35,20 @@ require({
 		if(r.tojson().parameters.jsondata){
 			$.getJSON(r.tojson().parameters.jsondata,function(obj){
 				window.obj=obj;
-				ui({target:$("#output"),data:obj});
+				ui({target:$("#output"),root:obj});
+			});
+		}else{
+			$.getJSON("https://raw.githubusercontent.com/evocert/kwe/main/gendocs/codedefs.json",function(obj){
+				window.obj=obj;
+				ui({target:$("#output"),root:obj});
+			});
+		}
+
+		/*
+		if(r.tojson().parameters.jsondata){
+			$.getJSON(r.tojson().parameters.jsondata,function(obj){
+				window.obj=obj;
+				ui({target:$("#output"),root:obj});
 			});
 		}else{
 			var base=r.tojson().parameters.base?r.tojson().parameters.base:r.tojson().parameters.base?r.tojson().parameters.base:"https://raw.githubusercontent.com/evocert/kwe/main/";
@@ -61,12 +74,12 @@ require({
 					obj.meta={};
 					obj.meta.dur=(t1-t0)/1000+" seconds";
 					$("#output").text(JSON.stringify(obj,0,2))
-					ui({target:$("#output"),data:obj});
+					ui({target:$("#output"),root:obj});
 				}.bind(this));
 			});
 			window.obj=obj;
-
 		}
+		*/
 	};
 	window.buildClient();
 });
