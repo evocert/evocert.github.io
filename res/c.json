@@ -1,4 +1,3 @@
-//ockert: css classes .type.int64 && .type
 {
   "/legent": {
     "/scope-global": "/g/",
@@ -136,7 +135,7 @@
             }
           },
           "==": [],
-          "/../": [],
+          "/../": ["A","B"],
           "/m/": {
             "/g/": {
               "Lock": {
@@ -842,7 +841,7 @@
       "/p/": {
         "mapKeys": {
           "type": "func",
-          "owner": "",//ockert
+          "owner": "",
           "parameters": [
             {
               "mp": "*Map"
@@ -851,7 +850,7 @@
               "mphndlr": "*MapHandler"
             }
           ],
-          "/../": [],//ockert
+          "/../": [],
           "<<": [
             {
               "keys": "[]interface{}"
@@ -1563,10 +1562,10 @@
           },
           "Map": {
             "type": "type",
-            "base": "struct",//ockert
+            "base": "struct",
             "/f/": {
-              "/g/": {},//ockert
-              "/p/": {//ockert
+              "/g/": {},
+              "/p/": {
                 "lck": "*sync.RWMutex",
                 "keys": "*enumeration.List",
                 "kvndm": "map[*enumeration.Node]*enumeration.Node",
@@ -1576,7 +1575,7 @@
               }
             },
             "==": [],
-            "/../": [],//ockert
+            "/../": [],
             "/m/": {
               "/g/": {
                 "Handler": {

@@ -1,7 +1,7 @@
 [['use strict';]]
 [[try{]]
 [[function printFunction(g,k,obj){
-	]]<section>[[
+	]]<section class="section_func">[[
 		]]<h3 class="section__title">[[print(k);]]</h3>[[
 		//comments
 		if(obj[legend.comments].length==0){
@@ -9,63 +9,64 @@
 		}else{
 			]]<p>[[print(obj[legend.comments].join("\n"));]]</p>[[
 		}
-	]]</section>[[
-	]]<table>
-		<colgroup>
-			<col style="width:20%;"></col>
-			<col style="width:80%;"></col>
-		</colgroup>
-		<tbody>
-			<tr><td>ident:</td><td>[[print(k);]]</td></tr>
-			<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
-			<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
-			<tr><td>parameters:</td><td>
-				[[if(obj[legend.parameters].length==0){
-					print("none");
-				}else{
-					]]<table>
-						<colgroup>
-							<col style="width:30%;"></col>
-							<col style="width:70%;"></col>
-						</colgroup>
-						<tbody>[[
-					obj[legend.parameters].forEach(function(k){
-						Object.keys(k).forEach(function(k2){
-							]]<tr>[[
-							]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
-							]]</tr>[[
+		]]<table>
+			<colgroup>
+				<col style="width:20%;"></col>
+				<col style="width:80%;"></col>
+			</colgroup>
+			<tbody>
+				<tr><td>ident:</td><td>[[print(k);]]</td></tr>
+				<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
+				<tr><td>owner:</td><td>[[print(obj.owner);]]</td></tr>
+				<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
+				<tr><td>parameters:</td><td>
+					[[if(obj[legend.parameters].length==0){
+						print("none");
+					}else{
+						]]<table>
+							<colgroup>
+								<col style="width:30%;"></col>
+								<col style="width:70%;"></col>
+							</colgroup>
+							<tbody>[[
+						obj[legend.parameters].forEach(function(k){
+							Object.keys(k).forEach(function(k2){
+								]]<tr>[[
+								]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
+								]]</tr>[[
+							}.bind(this));
+						});
+							]]<tbody>
+						</table>[[
+					}]]
+				</td></tr>
+				<tr><td>returns:</td><td>
+					[[if(obj[legend.returns].length==0){
+						print("none");
+					}else{
+						]]<table>
+							<colgroup>
+								<col style="width:30%;"></col>
+								<col style="width:70%;"></col>
+							</colgroup>
+							<tbody>[[
+						obj[legend.returns].forEach(function(k){
+							Object.keys(k).forEach(function(k2){
+								]]<tr>[[
+								]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
+								]]</tr>[[
+							});
 						}.bind(this));
-					});
-						]]<tbody>
-					</table>[[
-				}]]
-			</td></tr>
-			<tr><td>returns:</td><td>
-				[[if(obj[legend.returns].length==0){
-					print("none");
-				}else{
-					]]<table>
-						<colgroup>
-							<col style="width:30%;"></col>
-							<col style="width:70%;"></col>
-						</colgroup>
-						<tbody>[[
-					obj[legend.returns].forEach(function(k){
-						Object.keys(k).forEach(function(k2){
-							]]<tr>[[
-							]]	<td>[[print(k2);]]</td><td>[[print(k[k2]);]]</td>[[
-							]]</tr>[[
-						});
-					}.bind(this));
-						]]</tbody>
-					</table>[[
-				}]]
-			</td></tr>
-		</tbody>
-	</table>[[
-};]]
+							]]</tbody>
+						</table>[[
+					}]]
+				</td></tr>
+			</tbody>
+		</table>
+	</section>
+[[};]]
 [[function printStruct(g,k,obj){
-	]]<section>[[
+	]]<section class="section_struct">[[
 		]]<h3 class="section__title">[[print(k);]]</h3>[[
 		//comments
 		if(obj[legend.comments].length==0){
@@ -73,44 +74,124 @@
 		}else{
 			]]<p>[[print(obj[legend.comments].join("\n"));]]</p>[[
 		}
-	]]</section>[[
-	]]<table>
-		<colgroup>
-			<col style="width:20%;"></col>
-			<col style="width:80%;"></col>
-		</colgroup>
-		<tbody>
-			<tr><td>ident:</td><td>[[print(k);]]</td></tr>
-			<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
-			<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
-			<tr><td>fields:</td><td>
-				<table>
-					<colgroup>
-						<col style="width:30%;"></col>
-						<col style="width:70%;"></col>
-					</colgroup>
-					<tbody>[[
-					if(obj[legend.fields][legend.scope_global]){
-						Object.keys(obj[legend.fields][legend.scope_global]).forEach(function(k){
+		]]<table>
+			<colgroup>
+				<col style="width:20%;"></col>
+				<col style="width:80%;"></col>
+			</colgroup>
+			<tbody>
+				<tr><td>ident:</td><td>[[print(k);]]</td></tr>
+				<tr><td>type:</td><td>[[print(obj.type);]]</td></tr>
+				<tr><td>scope:</td><td>[[print(g?"global":"local");]]</td></tr>
+				<tr><td>global fields:</td><td>
+					<table>
+						<colgroup>
+							<col style="width:30%;"></col>
+							<col style="width:70%;"></col>
+						</colgroup>
+						<tbody>[[
+						if(obj[legend.fields][legend.scope_global]){
+							if(Object.keys(obj[legend.fields][legend.scope_global]).length==0){
+								]]<tr>[[
+								]]	<td>none</td>[[
+								]]</tr>[[
+							}else{
+								Object.keys(obj[legend.fields][legend.scope_global]).forEach(function(k){
+									]]<tr>[[
+									]]	<td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_global][k]);]]</td>[[
+									]]</tr>[[
+								});
+							}
+						}else{
 							]]<tr>[[
-							]]	<td>public</td><td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_global][k]);]]</td>[[
+							]]	<td>none</td>[[
 							]]</tr>[[
-						});
-					}else{
-					}
-					if(obj[legend.fields][legend.scope_private]){
-						Object.keys(obj[legend.fields][legend.scope_private]).forEach(function(k){
+						}
+						]]<tbody>
+					</table>
+				</td></tr>
+				<tr><td>local fields:</td><td>
+					<table>
+						<colgroup>
+							<col style="width:30%;"></col>
+							<col style="width:70%;"></col>
+						</colgroup>
+						<tbody>[[
+						if(obj[legend.fields][legend.scope_local]){
+							if(Object.keys(obj[legend.fields][legend.scope_local]).length==0){
+								]]<tr>[[
+								]]	<td>none</td>[[
+								]]</tr>[[
+							}else{
+								Object.keys(obj[legend.fields][legend.scope_local]).forEach(function(k){
+									]]<tr>[[
+									]]	<td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_local][k]);]]</td>[[
+									]]</tr>[[
+								});
+							}
+						}else{
 							]]<tr>[[
-							]]	<td>private</td><td>[[print(k);]]</td><td>[[print(obj[legend.fields][legend.scope_private][k]);]]</td>[[
+							]]	<td>none</td>[[
 							]]</tr>[[
-						});
-					}else{
-					}
-					]]<tbody>
-				</table>
-			</td></tr>
-		</tbody>
-	</table>
+						}
+						]]<tbody>
+					</table>
+				</td></tr>
+				<tr><td>global methods:</td><td>
+					<table>
+						<colgroup>
+							<col style="width:100%;"></col>
+						</colgroup>
+						<tbody>[[
+						if(obj[legend.methods][legend.scope_global]){
+							if(Object.keys(obj[legend.methods][legend.scope_global]).length==0){
+								]]<tr>[[
+								]]	<td>none</td>[[
+								]]</tr>[[
+							}else{
+								Object.keys(obj[legend.methods][legend.scope_global]).forEach(function(k){
+									]]<tr>[[
+									]]	<td>[[printFunction(true,k,obj[legend.methods][legend.scope_global][k]);]]</td>[[
+									]]</tr>[[
+								});
+							}
+						}else{
+							]]<tr>[[
+							]]	<td>none</td>[[
+							]]</tr>[[
+						}
+						]]<tbody>
+					</table>
+				</td></tr>
+				<tr><td>local methods:</td><td>
+					<table>
+						<colgroup>
+							<col style="width:100%;"></col>
+						</colgroup>
+						<tbody>[[
+						if(obj[legend.methods][legend.scope_local]){
+							if(Object.keys(obj[legend.methods][legend.scope_local]).length==0){
+								]]<tr>[[
+								]]	<td>none</td>[[
+								]]</tr>[[
+							}else{
+								Object.keys(obj[legend.methods][legend.scope_local]).forEach(function(k){
+									]]<tr>[[
+									]]	<td>[[printFunction(true,k,obj[legend.methods][legend.scope_local][k]);]]</td>[[
+									]]</tr>[[
+								});
+							}
+						}else{
+							]]<tr>[[
+							]]	<td>none</td>[[
+							]]</tr>[[
+						}
+						]]<tbody>
+					</table>
+				</td></tr>
+			</tbody>
+		</table>
+	</section>
 [[};]]
 
 <aside class="doc__nav">
@@ -209,13 +290,40 @@
 		background:var(--accent-color);
 		font-weight:bold;
 	}
-/*
-	table td, table th {
-		border: 1px solid var(--code-bg-color);
-		padding: 4px;
+	table{
+		margin-bottom:0px;
+	}
+	table td,
+	table th{
+		border: 0px;/*1px solid var(--code-bg-color);*/
+		padding: 0px;
 		font-weight: 300;
 		vertical-align:top;
 	}
+tr{
+  background:linear-gradient(to right, #FFFFFF,#EFEFEF);
+}
+table tr:nth-child(2n+1){
+  background:linear-gradient(to right, #FFFFFF,#DDDDDD);
+}
+
+.section_struct td>.section_func::after{
+  content:"";
+  height:4px;
+  width:100%!important;;
+  background:linear-gradient(to right,#DDDDDD,#AAAAAA);
+  display: block;
+}
+td h3,
+td p{
+  font-size:inherit;
+  margin:0px;
+}
+td h3{
+}
+td table{
+}
+/*
 	table td {
 		background-color: #CCC;
 		color: #888888;
