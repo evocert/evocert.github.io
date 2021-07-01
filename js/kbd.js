@@ -106,6 +106,7 @@ define([
 			}else{
 				kbdbuf=[];
 			}
+			/*
 			if(e.key=="ArrowLeft"){
 				e.stopPropagation();
 				e.preventDefault();
@@ -152,6 +153,7 @@ define([
 				e.preventDefault();
 				$("."+"ctrl-alt-"+e.key).click();
 			}
+			*/
 		});
 	});
 	module.exports={};
