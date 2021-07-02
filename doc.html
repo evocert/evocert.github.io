@@ -20,8 +20,9 @@
       <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
         <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
+        <li class="menu__item"><a href="doc.html" class="link link--dark"><i class="fa fa-book"></i> Docs</a></li>
         <li class="menu__item"><a href="api.html" class="link link--dark"><i class="fa fa-book"></i> API</a></li>
-        <li class="menu__item"><a href="" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+	<li class="menu__item"><a href="https://github.com/evocert" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
       </ul>
     </nav>
     <div class="wrapper">
@@ -54,22 +55,22 @@
           <div class="code__block code__block--notabs">
             <pre class="code code--block">
               <code>
-		$ wget https://github.com/evocert/kwereleases/releases/download/0.0.1/kwe_${PLATFORM}
-		$ wget https://evocert.github.io/res/samples/config/kwe_${PLATFORM}.conf.js
+		$ wget http://skullquake.dedicated.co.za/build/bin/kwe_${PLATFORM}
+		$ wget http://skullquake.dedicated.co.za/build/bin/kwe.conf.js
 		$ mkdir ./www
 		$ wget https://evocert.github.io/res/samples/modules/sample.zip -o ./www/sample.zip
-		$ ./kwe_${PLATFORM}
+		$ ./kwe_${PLATFORM} ./kwe.conf.js
               </code>
             </pre>
           </div>
-          <p>Replace <code>${PLATFORM}</code> with your chosen platform, <i>i.e.</i> <code>windows</code>, <code>linux</code>, <code>darwin</code> or <code>aarch64</code></p>
+          <p>Replace <code>${PLATFORM}</code> with your chosen platform, <i>i.e.</i> <code>windows_amd64</code>, <code>linux_amd64</code>, <code>darwin_amd64</code> or <code>linux_arm64</code></p>
         </section>
           <h3 class="section__title">Installation</h3>
 	  <p>Download the executable using <code>curl</code> or <code>wget</code></p>
           <div class="code__block code__block--notabs">
             <pre class="code code--block">
               <code>
-		$ wget https://github.com/evocert/kwereleases/releases/download/0.0.1/kwe_${PLATFORM}
+		$ wget http://skullquake.dedicated.co.za/build/bin/kwe_${PLATFORM}
               </code>
             </pre>
           </div>
