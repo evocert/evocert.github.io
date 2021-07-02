@@ -1,9 +1,13 @@
 define([
 	"module",
-	"jquery"
+	"jquery",
+	"./session.js",
+	"./objutils.js"
 ],function(
 	module,
-	_$
+	_$,
+	session,
+	objutils
 ){
 	$=_$.noConflict();
 	//find elements
@@ -16,6 +20,34 @@ define([
 		else
 			banner.addClass("alt")
 	})
+	function objsearch(k){
+		if(k==null||k.length==0)return;
+		var pbuf=[];
+		var max=8192;
+		var maxr=25;
+		var idx=0;
+		var rdx=0;
+		var search=k;//"main";
+		try{
+			objutils(obj,function(pth,o){
+				if(max!=-1){
+					if(idx>max)throw('done');
+					idx++;
+				}
+				return pth[pth.length-1].toLowerCase().indexOf(search.toLowerCase())>-1;
+			}.bind(this),function(pth,o){
+				pbuf.push(pth.join(".").split("."));
+				console.log(pth.join("."));
+				if(maxr!=-1){
+					if(rdx>maxr)throw('done');
+					rdx++;
+				}
+
+			}.bind(this));
+		}catch(e){}
+		console.log("-".repeat(8));
+		return pbuf;
+	};
 	$(document).ready(function(){
 		$.expr[":"].contains = $.expr.createPseudo(function(arg) {
 			return function( elem ) {
@@ -29,6 +61,7 @@ define([
 				var div=$("<div/>");
 				div.css({
 					"width":"auto",
+					"text-align":"right",
 					"position":"fixed",
 					"padding":"4px",
 					"border-radius":"4px",
@@ -43,6 +76,8 @@ define([
 					padding:"4px",
 				});
 				div.append(input);
+				var results=$("<div/>")
+				div.append(results);
 				//$("body").append(div);
 				//div.hide();
 				input.on("keyup",function(e){
@@ -51,7 +86,14 @@ define([
 						input.blur();
 					}else if(e.key=="Enter"){
 						input.blur();
-						if(typeof(fnbuf[input.val()])=="function")try{fnbuf[input.val()]()}catch(e){console.error(e);}else{
+						var cmd=input.val().split(" ")[0];
+						var args=input.val().split(" ").slice(1);
+						if(typeof(fnbuf[cmd])=="function")
+							try{
+								fnbuf[cmd].apply(this,args)
+							}catch(e){
+								console.error(e);
+						}else{
 							var els=$("a");
 							var el=els.find("selected");
 							els.removeClass("selected");
@@ -61,9 +103,26 @@ define([
 							$('html, body').animate({ scrollTop:el.offset().top-100 }, 10);
 						};
 					}else{
+						var term=input.val();
+						var r=objsearch(term);
+						if(r!=null&&r.length>0){
+							results.show();
+							results.empty();
+							var ul=$("<div/>");
+							ul.css({"background":"#FFFFFF","padding":"8px","color":"#000000","font-family":"monospace"});
+							r.forEach(function(v){
+								var txt=v.filter(function(v){return v[0]!="/"}).join(".")
+								var maxlen=24;
+								if(txt.length>maxlen)txt=txt.substring(txt.length-maxlen,txt.length);
+								ul.append($("<div/>").text(txt));
+							}.bind(this));
+							results.append(ul);
+						}else{
+							results.hide();
+						}
 						var els=$("a");
 						els.removeClass("selected");
-						var el=$("a:contains("+input.val()+")").first();
+						var el=$("a:contains("+term+")").first();
 						if(el.length==0)return;
 						el.addClass("selected");
 						$('html, body').animate({ scrollTop:el.offset().top-100 }, 10);
@@ -85,7 +144,35 @@ define([
 			"asdf":function(){console.log("cmd2");},
 			"fdsa":function(){console.log("cmd3");},
 			"zxcv":function(){console.log("cmd4");},
-			"vcxz":function(){console.log("cmd5");}
+			"vcxz":function(){console.log("cmd5");},
+			"theme":(function(arg){
+				session
+				var tbuf=[
+					"./scribbler-global-dark.css",
+					"./scribbler-global-light.css"
+				];
+				var tidx=0;
+				function set_theme(arg){
+					$(document).ready(function(){
+						var t;
+						if(arg){
+							if(arg.endsWith(".css"))t=arg;else
+							t=["./scribbler-global-",arg,".css"].join("");}
+						else{
+							tidx++;
+							if(tidx>=tbuf.length)tidx=0;
+							t=tbuf[tidx]
+						}
+						session.data.theme=t;
+						session.save();
+						$("#theme_css").attr("href",t);
+					}.bind(this));
+						
+				};
+				if(session.data.theme!=null)set_theme(session.data.theme);
+				return set_theme;
+				
+			})()
 		};
 		$(document).on("keydown",function(e){
 			if(e.key=="/"){
@@ -97,7 +184,9 @@ define([
 					kbdbuf.push(e.key);
 					bufln=kbdbuf.join("");
 					if(typeof(fnbuf[bufln])=="function"){
-						try{fnbuf[bufln]();}catch(e){console.error(e.toString())};
+						try{
+							fnbuf[bufln]();
+						}catch(e){console.error(e.toString())};
 						kbdbuf=[];
 					}
 				}else{

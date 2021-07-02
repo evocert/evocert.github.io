@@ -16,7 +16,9 @@ require({
 	"./js/kbd",
 	"./js/ui",
 	"./js/request",
-	"text!frag/doc.html"
+	"./js/session",
+	"./js/objutils"//,
+	//"text!frag/doc.html"
 ],function(
 	module,
 	_$,
@@ -24,10 +26,13 @@ require({
 	kbd,
 	ui,
 	r,
-	frag_doc
+	session,
+	objutils,
+	//frag_doc
 ){
+	window.objutils=objutils;
 	$=_$.noConflict();
-	$(document.body).html(frag_doc)
+	//$(document.body).html(frag_doc)
 	window.buildClient=function(){
 		var obj={};
 		if(r.tojson().parameters.jsondata){
