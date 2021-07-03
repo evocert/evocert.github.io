@@ -6,7 +6,12 @@
 	var repofolder=k.path.split("/");
 	repofolder.pop();
 	var repopath="https://github.com/evocert/kweexamples/blob/main/"+repofolder.join("/");
-	var title=k.path.split("/")[1].split("_").join(" ");
+	var title=[];
+	k.path.split("/")[1].split("_").join(" ").split(" ").forEach(function(v){
+		v=v.charAt(0).toUpperCase()+v.slice(1);
+		title.push(v);
+	}.bind(this));
+	title=title.join(" ");
 ]]
 		<section class="js-section">
 			<h3 class="section__title"><a href="[[print(repopath);]]" target="_blank"><i class="fa fa-eye"></i> [[print(title);]]</a></h3>
@@ -20,4 +25,9 @@
 	console.log("scr:start");
 	console.log("scr:end");
 </script>
+<style>
+	.wrapper .fa{
+		color:var(--accent-color)!important;
+	}
+</style>
 [[console.log("tpl:end");]]
