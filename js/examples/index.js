@@ -49,6 +49,7 @@ require({
 								beglbl:"{{",
 								endlbl:"}}",
 								data:options.data,
+								showdown:showdown,
 								flushpassive:function(val,idx){
 									src+=val;
 								},
@@ -66,10 +67,12 @@ require({
 		);
 		options.target.html(src)
 		$(".md").toArray().forEach(function(el){
+			/*
 			var converter = new showdown.Converter();
 			var md=$(el).text()
 			var html = converter.makeHtml(md);
 			$(el).html(html)
+			*/
 		}.bind(this));
 	};
 //http://localhost:8081/evocert.github.io/examples.html?jsondata=http://localhost:8081/kweexamples/docgen/data.json
