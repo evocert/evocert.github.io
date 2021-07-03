@@ -65,80 +65,12 @@ require({
 			options.template
 		);
 		options.target.html(src)
-		var converter = new showdown.Converter();
-		options.target.find("#md").toArray().forEach(function(el){
+		$(".md").toArray().forEach(function(el){
+			var converter = new showdown.Converter();
 			var md=$(el).text()
 			var html = converter.makeHtml(md);
 			$(el).html(html)
 		}.bind(this));
-		$(options.target).find("a").click(function(tgt){
-			/*
-			var id=$(this).attr("id")
-			var template=$(this).data("template");
-			if(!template){
-				if(id==""||id==null)return;
-				if(id==".."){
-					console.log("A");
-					render(
-						options.parent
-					);
-					return;
-				}
-				if(id.startsWith("_.")){
-					console.log("B");
-					id=id.substring(2);
-					render({
-						parent:options,
-						target:options.target,
-						isdetailedview:true,
-						root:options.root,
-						data:options.data._[id]
-					});
-				}else{
-					console.log("C");
-					render({
-						parent:options,
-						target:options.target,
-						root:options.root,
-						data:options.data[id]
-					});
-				}
-			}else{
-				require(["text!"+template],function(template){
-					if(typeof(template)=="undefined"||template==null){
-						throw("ETPL");
-					}
-					if(id==""||id==null)return;
-					if(id==".."){
-						console.log("D");
-						render(
-							options.parent
-						);
-						return;
-					}
-					if(id.startsWith("_.")){
-						console.log("E");
-						id=id.substring(2);
-						render({
-							parent:options,
-							target:options.target,
-							isdetailedview:true,
-							data:options.root._[id],
-							template:template
-						});
-					}else{
-						console.log("F");
-						render({
-							parent:options,
-							target:options.target,
-							data:options.root[id],
-							template:template
-						});
-					}
-				});
-			}
-			*/
-		});
 	};
 //http://localhost:8081/evocert.github.io/examples.html?jsondata=http://localhost:8081/kweexamples/docgen/data.json
 	$(document.body).ready(function(){
