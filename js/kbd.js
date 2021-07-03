@@ -76,8 +76,8 @@ define([
 					padding:"4px",
 				});
 				div.append(input);
-				var results=$("<div/>")
-				div.append(results);
+				var div_results=$("<div/>")
+				div.append(div_results);
 				//$("body").append(div);
 				//div.hide();
 				input.on("keyup",function(e){
@@ -106,19 +106,21 @@ define([
 						var term=input.val();
 						var r=objsearch(term);
 						if(r!=null&&r.length>0){
-							results.show();
-							results.empty();
+							div_results.show();
+							div_results.empty();
 							var ul=$("<div/>");
 							ul.css({"background":"#FFFFFF","padding":"8px","color":"#000000","font-family":"monospace"});
 							r.forEach(function(v){
+								var results={};
+								var results=v.filter(function(v){return v[0]!="/"}).join(".")
 								var txt=v.filter(function(v){return v[0]!="/"}).join(".")
 								var maxlen=24;
 								if(txt.length>maxlen)txt=txt.substring(txt.length-maxlen,txt.length);
 								ul.append($("<div/>").text(txt));
 							}.bind(this));
-							results.append(ul);
+							div_results.append(ul);
 						}else{
-							results.hide();
+							div_results.hide();
 						}
 						var els=$("a");
 						els.removeClass("selected");

@@ -1,0 +1,23 @@
+[[console.log("tpl:start");]]
+<div class="wrapper">
+	<article class="doc__content">
+[[options.data.forEach(function(k){]]
+[[
+	var repofolder=k.path.split("/");
+	repofolder.pop();
+	var repopath="https://github.com/evocert/kweexamples/blob/main/"+repofolder.join("/");
+	var title=k.path.split("/")[1].split("_").join(" ");
+]]
+		<section class="js-section">
+			<h3 class="section__title"><a href="[[print(repopath);]]" target="_blank">[[print(title);]]</a></h3>
+		<p id="md">[[print(k.readme);]]</p>
+		<hr/>
+		</section>
+[[});]]
+	</article>
+</div>
+<script>
+	console.log("scr:start");
+	console.log("scr:end");
+</script>
+[[console.log("tpl:end");]]
