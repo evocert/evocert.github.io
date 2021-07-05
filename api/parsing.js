@@ -1,36 +1,36 @@
 !(function(name,context,definition){if(typeof exports==='object'){module.exports=definition(require);}else if(typeof define==='function'&&define.amd){define(definition); }else{context[name]=definition();}
 }).call(this,'parseActivePassive',this,function(require){
-    function parseActivePassive(prsng,unparsedcontent){
+    function parseActivePassive(options,unparsedcontent){
 
-        function callprsng(){
-            if (typeof prsng==="function") {
-                return prsng();
+        function calloptions(){
+            if (typeof options==="function") {
+                return options();
             } 
-            return prsng;
+            return options;
         }
 
-	    if (typeof callprsng().startParsing === "function") {
-		    callprsng().startParsing();
+	    if (typeof calloptions().startParsing === "function") {
+		    calloptions().startParsing();
 	    }
 
-        var trimcode=(typeof callprsng().trimactive === "boolean")?callprsng().trimactive:true;
+        var trimcode=(typeof calloptions().trimactive === "boolean")?calloptions().trimactive:true;
 
 	    var passive="";
         var unsprsdln=-1;
         var psvprsdi=-1;
         var atvprsdi=-1;
-	    var canprintout=typeof callprsng().print === "function";
-	    var owner=typeof callprsng().owner === "object" ? callprsng().owner:null;
+	    var canprintout=typeof calloptions().print === "function";
+	    var owner=typeof calloptions().owner === "object" ? calloptions().owner:null;
 	    var print=function(prntthis) {
             if (canprintout && typeof prntthis === "string" && prntthis!=="") {
                 passive+=prntthis;
             }       
 	    }
-        var altFlushPassive=typeof callprsng().flushpassive === "function"?callprsng().flushpassive:null;
+        var altFlushPassive=typeof calloptions().flushpassive === "function"?calloptions().flushpassive:null;
         var altFlushPassiveResult=null;
-        var altFlushActive=typeof callprsng().flushactive === "function"?callprsng().flushactive:null;
+        var altFlushActive=typeof calloptions().flushactive === "function"?calloptions().flushactive:null;
         var altFlushActiveResult=null;
-        var altEvalActive=typeof callprsng().evalactive === "function"?callprsng().evalactive:null;
+        var altEvalActive=typeof calloptions().evalactive === "function"?calloptions().evalactive:null;
         var stillvalid=true;
 
 	    function iterateString(prsgn,stringtoiterate,functoprsr) {
@@ -68,15 +68,15 @@
 	    var endi=0;
 	    var content=[];
 
-	    if (typeof callprsng().beglbl!=="string" && typeof callprsng().beglbl!=="function") {
-		    callprsng()["beglbl"]="[@";
+	    if (typeof calloptions().beglbl!=="string" && typeof calloptions().beglbl!=="function") {
+		    calloptions()["beglbl"]="[@";
 	    }
 
-	    if (typeof callprsng().endlbl!=="string" && typeof callprsng().endlbl!=="function") {
-		    callprsng()["endlbl"]="@]";
+	    if (typeof calloptions().endlbl!=="string" && typeof calloptions().endlbl!=="function") {
+		    calloptions()["endlbl"]="@]";
 	    }
 
-	    function flushPassive(prsng){
+	    function flushPassive(options){
             if (tmppassive!="") {
                 if (altFlushPassive!=null && typeof altFlushPassive === "function") {
                     if((altFlushPassiveResult=altFlushPassive(tmppassive,psvprsdi))!=null && typeof altFlushPassiveResult ==="boolean" && altFlushPassiveResult===false){
@@ -101,12 +101,12 @@
             }
 	    }
 
-	    function parsePsvChar(prsng,chr) {
-            flushCode(prsng);
+	    function parsePsvChar(options,chr) {
+            flushCode(options);
             tmppassive+=chr;
 	    }
 
-	    function parseCodeChar(prsng,chr) {
+	    function parseCodeChar(options,chr) {
             if(!hasCode) {
                 if (trimcode && (chr+"").trim()!=="") {
                     hasCode=true;
@@ -115,7 +115,7 @@
                 }
             }
             if (hasCode) {
-                flushPassive(prsng)
+                flushPassive(options)
                 if (!foundCode) {
                 foundCode=true;
                 }
@@ -139,33 +139,33 @@
             }
 	    }
 
-        function beglbl(prsng) {
-            if (typeof prsng.beglbl=== "function") {
-                return prsng.beglbl()
+        function beglbl(options) {
+            if (typeof options.beglbl=== "function") {
+                return options.beglbl()
             }
-            return prsng.beglbl;
+            return options.beglbl;
         }
 
-        function endlbl(prsng) {
-            if (typeof prsng.endlbl=== "function") {
-                return prsng.endlbl()
+        function endlbl(options) {
+            if (typeof options.endlbl=== "function") {
+                return options.endlbl()
             }
-            return prsng.endlbl;
+            return options.endlbl;
         }
 	    
-	    function parsechr(prsng,chr) {
-            if (endi==0 && begi<beglbl(prsng).length) {
+	    function parsechr(options,chr) {
+            if (endi==0 && begi<beglbl(options).length) {
                 if (psvprsdi==-1) {
                     psvprsdi=unsprsdln;
                 }
-                if (begi>0 && beglbl(prsng)[begi-1]==prvc && beglbl(prsng)[begi]!==chr) {
+                if (begi>0 && beglbl(options)[begi-1]==prvc && beglbl(options)[begi]!==chr) {
                 var bi=begi;
                 begi=0;
-                iterateString(prsng,beglbl(prsng).substring(0,bi),parsePsvChar);
+                iterateString(options,beglbl(options).substring(0,bi),parsePsvChar);
                 }
-                if (beglbl(prsng)[begi]===chr) {
+                if (beglbl(options)[begi]===chr) {
                 begi++;
-                if (begi===beglbl(prsng).length){
+                if (begi===beglbl(options).length){
                     prvc="";
                     prvc="";
                 } else {
@@ -175,17 +175,17 @@
                 if (begi>0) {
                     var bi=begi;
                     begi=0;
-                    iterateString(prsng,beglbl(prsng).substring(0,bi),parsePsvChar);
+                    iterateString(options,beglbl(options).substring(0,bi),parsePsvChar);
                 }
-                parsePsvChar(prsng, prvc=chr);
+                parsePsvChar(options, prvc=chr);
                 }
-            } else if (begi==beglbl(prsng).length && endi<endlbl(prsng).length) {
+            } else if (begi==beglbl(options).length && endi<endlbl(options).length) {
                 if (atvprsdi==-1) {
                     atvprsdi=unsprsdln;
                 }
-                if (endlbl(prsng)[endi]===chr) {
+                if (endlbl(options)[endi]===chr) {
                     endi++;
-                        if (endi===endlbl(prsng).length){
+                        if (endi===endlbl(options).length){
                             begi=0;
                             endi=0;
                             prvc="";
@@ -194,17 +194,17 @@
                     if (endi>0) {
                         var bi=endi;
                         endi=0;
-                        iterateString(prsng,endlbl(prsng).substring(0,bi),parseCodeChar);
+                        iterateString(options,endlbl(options).substring(0,bi),parseCodeChar);
                     }
-                    parseCodeChar(prsng, chr);
+                    parseCodeChar(options, chr);
                 }
             }
         }
 
-	    iterateString(callprsng(),unparsedcontent,parsechr);
+	    iterateString(calloptions(),unparsedcontent,parsechr);
 	    
-	    flushPassive(callprsng()); 
-	    flushCode(callprsng());
+	    flushPassive(calloptions()); 
+	    flushCode(calloptions());
 	    if (foundCode && code!="") {
             if (altEvalActive!=null && typeof altEvalActive === "function") {
                 //altEvalActive(code);
@@ -217,12 +217,12 @@
 
 	    if (passive!=="") {
             if (canprintout){
-                callprsng().print(passive);
+                calloptions().print(passive);
             }
 	    }
 
-	    if (typeof callprsng().endParsing === "function") {
-		    callprsng().endParsing();
+	    if (typeof calloptions().endParsing === "function") {
+		    calloptions().endParsing();
 	    }
 	}
 	return parseActivePassive;

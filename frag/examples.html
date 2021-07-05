@@ -1,11 +1,12 @@
 [[console.log("tpl:start");]]
 <div class="wrapper">
 	<article class="doc__content">
-[[options.data.forEach(function(k){]]
+[[opts.data.forEach(function(k){]]
 [[
 	var repofolder=k.path.split("/");
 	repofolder.pop();
 	var repopath="https://github.com/evocert/kweexamples/blob/main/"+repofolder.join("/");
+	var mdpath="https://raw.githubusercontent.com/evocert/kweexamples/main/"+repofolder.join("/")+"/README.md";
 	var title=[];
 	k.path.split("/")[1].split("_").join(" ").split(" ").forEach(function(v){
 		v=v.charAt(0).toUpperCase()+v.slice(1);
@@ -13,16 +14,9 @@
 	}.bind(this));
 	title=title.join(" ");
 ]]
-		<section class="js-section">
-			<h3 class="section__title"><a href="[[print(repopath);]]" target="_blank"><i class="fa fa-eye"></i> [[print(title);]]</a></h3>
-		<p class="md">[[
-			//print(k.readme);
-                        var converter = new showdown.Converter();
-                        var html = converter.makeHtml(k.readme);
-                        print(html)
-		]]</p>
-		<hr/>
-		</section>
+		<a data-template="./frag/test.html" data-context='{"repopath":[[print(JSON.stringify(repopath));]],"title":[[print(JSON.stringify(title));]],"mdpath":[[print(JSON.stringify(mdpath));]]}' target="_blank">
+			<h3 class="section__title">[[print(title);]]</h3>
+		</a>
 [[});]]
 	</article>
 </div>
