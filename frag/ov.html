@@ -241,9 +241,9 @@
 <aside class="doc__nav">
 	<ul class="">
 	[[if(options.parent){]]
-		<li class="js-btn left"><a href="#" id=".." class="back">Back</a></li>
+		<a href="#" id=".." class="back"><li class="js-btn left"> Back</li></a>
 	[[}else{]]
-		<li class="js-btn"><a href="#" class="back">Home</a></li>
+		<a href="#" class="back"><li class="js-btn"> Home</li></a>
 	[[}]]
 		[[Object.keys(options.data).forEach(function(_k){
 			if(_k.startsWith("/"))return;
