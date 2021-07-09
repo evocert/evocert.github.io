@@ -23,6 +23,7 @@ define([
 	function objsearch(k){
 		if(k==null||k.length==0)return;
 		var pbuf=[];
+		var pmap={};
 		var max=8192;
 		var maxr=25;
 		var idx=0;
@@ -37,7 +38,10 @@ define([
 				return pth[pth.length-1].toLowerCase().indexOf(search.toLowerCase())>-1;
 			}.bind(this),function(pth,o){
 				pbuf.push(pth.join(".").split("."));
-				console.log(pth.join("."));
+				pmap[pth.join(".")]={
+					path:pth,
+					data:o
+				}
 				if(maxr!=-1){
 					if(rdx>maxr)throw('done');
 					rdx++;
@@ -45,7 +49,9 @@ define([
 
 			}.bind(this));
 		}catch(e){}
-		console.log("-".repeat(8));
+		console.log("-pmap-".repeat(8));
+		console.log(pmap);
+		console.log("-/pmap-".repeat(8));
 		return pbuf;
 	};
 	$(document).ready(function(){
@@ -59,6 +65,7 @@ define([
 		var fnbuf={
 			"/":(function(){
 				var div=$("<div/>");
+				div.addClass("quicksearch");
 				div.css({
 					"width":"auto",
 					"text-align":"right",
@@ -78,11 +85,26 @@ define([
 				div.append(input);
 				var div_results=$("<div/>")
 				div.append(div_results);
-				//$("body").append(div);
-				//div.hide();
+				var idx_sel=0;
+				var sel_path=null;
 				input.on("keyup",function(e){
 					kbdbuf=[];
-					if(e.key=="Escape"){
+					if(e.key=="ArrowUp"){
+						e.stopPropagation();
+						e.preventDefault();
+						idx_sel--;
+						if(idx_sel<0)idx_sel=0;
+						if(idx_sel>div_results.find(".li").length-1)idx_sel=div_results.find(".li").length-1;
+						div_results.find(".li").removeClass("selected");
+						div_results.find(".li").eq(idx_sel).addClass("selected");
+					}else if(e.key=="ArrowDown"){
+						e.stopPropagation();
+						e.preventDefault();
+						idx_sel++;
+						if(idx_sel>div_results.find(".li").length-1)idx_sel=div_results.find(".li").length-1;
+						div_results.find(".li").removeClass("selected");
+						div_results.find(".li").eq(idx_sel).addClass("selected");
+					}else if(e.key=="Escape"){
 						input.blur();
 					}else if(e.key=="Enter"){
 						input.blur();
@@ -112,11 +134,15 @@ define([
 							ul.css({"background":"#FFFFFF","padding":"8px","color":"#000000","font-family":"monospace"});
 							r.forEach(function(v){
 								var results={};
-								var results=v.filter(function(v){return v[0]!="/"}).join(".")
-								var txt=v.filter(function(v){return v[0]!="/"}).join(".")
+								//var results=v.filter(function(v){return v[0]!="/"}).join(".")
+								var results=v;
+								//var txt=v.filter(function(v){return v[0]!="/"}).join(".")
+								var txt=v.join(".");//.filter(function(v){return v[0]!="/"}).join(".")
+								if(txt.length==0)return;
 								var maxlen=24;
-								if(txt.length>maxlen)txt=txt.substring(txt.length-maxlen,txt.length);
-								ul.append($("<div/>").text(txt));
+								var caption=txt;
+								if(txt.length>maxlen)caption=txt.substring(txt.length-maxlen,txt.length);
+								ul.append($("<div/>").addClass("li").data("path",txt).text(caption));
 							}.bind(this));
 							div_results.append(ul);
 						}else{
